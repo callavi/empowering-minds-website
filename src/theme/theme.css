@@ -1,4 +1,8 @@
 :root {
+  /* --------------------------------
+     Brand Colours
+  -------------------------------- */
+
   --color-primary: #23424e;
   --color-secondary: #a96a2d;
 
@@ -12,6 +16,116 @@
 
   --color-muted: #c9bca8;
   --color-soft-accent: #e8d5d1;
+
+
+  /* --------------------------------
+     Gradients
+  -------------------------------- */
+
+  --gradient-primary:
+    linear-gradient(135deg, #23424e 0%, #315968 100%);
+
+  --gradient-primary-soft:
+    linear-gradient(135deg, #23424e 0%, #3f6470 100%);
+
+  --gradient-warm:
+    linear-gradient(135deg, #a96a2d 0%, #c4874d 100%);
+
+  --gradient-soft:
+    linear-gradient(135deg, #f7f4ef 0%, #e8d5d1 100%);
+
+  --gradient-surface:
+    linear-gradient(135deg, #ffffff 0%, #f7f4ef 100%);
+
+  --gradient-brand:
+    linear-gradient(
+      135deg,
+      #23424e 0%,
+      #315968 55%,
+      #a96a2d 100%
+    );
+
+  --gradient-brand-soft:
+    linear-gradient(
+      135deg,
+      rgba(35, 66, 78, 0.08) 0%,
+      rgba(169, 106, 45, 0.08) 100%
+    );
+
+
+  /* --------------------------------
+     Shadows
+  -------------------------------- */
+
+  --shadow-sm:
+    0 4px 14px rgba(35, 66, 78, 0.05);
+
+  --shadow-md:
+    0 12px 30px rgba(35, 66, 78, 0.07);
+
+  --shadow-lg:
+    0 18px 45px rgba(35, 66, 78, 0.08);
+
+  --shadow-xl:
+    0 24px 60px rgba(35, 66, 78, 0.12);
+
+  --shadow-warm:
+    0 20px 50px rgba(169, 106, 45, 0.12);
+
+  --shadow-dark:
+    0 20px 55px rgba(35, 66, 78, 0.18);
+
+
+  /* --------------------------------
+     Border Radius
+  -------------------------------- */
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+
+  /* --------------------------------
+     Motion
+  -------------------------------- */
+
+  --transition-fast: 180ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+
+  /* --------------------------------
+     Decorative Elements
+  -------------------------------- */
+
+  --decorative-line-width: 48px;
+  --decorative-line-height: 3px;
+
+  --decorative-dot-size: 8px;
+
+  --decorative-ring-size: 72px;
+  --decorative-ring-border: 1px solid rgba(169, 106, 45, 0.24);
+
+
+  /* --------------------------------
+     Overlay / Transparency
+  -------------------------------- */
+
+  --overlay-light: rgba(255, 255, 255, 0.72);
+  --overlay-dark: rgba(35, 66, 78, 0.82);
+
+  --surface-hover: rgba(35, 66, 78, 0.035);
+
+  --border-subtle: rgba(35, 66, 78, 0.10);
+
+
+  /* --------------------------------
+     Status
+  -------------------------------- */
 
   --color-success: #22c55e;
   --color-warning: #f59e0b;

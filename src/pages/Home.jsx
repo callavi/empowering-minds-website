@@ -1,187 +1,151 @@
-import { useState } from "react";
-import {
-  empowerUContent,
-  homepageSections,
-  impactStats,
-  testimonials,
-  trainers,
-} from "../data/siteContent";
+import { homepageSections } from "../data/siteContent";
 import ProgramsCarousel from "../components/sections/ProgramsCarousel";
-import TrainerModal from "../components/sections/TrainerModal";
 import CTAButton from "../components/ui/CTAButton";
 import CTASection from "../components/ui/CTASection";
 import FeatureCard from "../components/ui/FeatureCard";
 import FadeIn from "../components/ui/FadeIn";
 import SectionHeader from "../components/ui/SectionHeader";
-import StatCard from "../components/ui/StatCard";
-import TestimonialCard from "../components/ui/TestimonialCard";
+import HumanPotentialVisual from "../components/ui/HumanPotentialVisual";
+import HumanPotentialVisualV2 from "../components/ui/HumanPotentialVisualV2";
 
-const heroOverlayOpacity = 0.2;
-const heroGradientOpacity = {
-  from: 0.5,
-  via: 0.66,
-  to: 0.88,
-};
 
 export default function Home() {
-  const [selectedTrainer, setSelectedTrainer] = useState(null);
-
   return (
     <main>
-      <section
-        className="relative overflow-hidden bg-[var(--color-primary)] pt-32 text-white"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      >
-        <div
-          className="absolute inset-0 bg-[var(--color-primary)]"
-          style={{ opacity: heroOverlayOpacity }}
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-[var(--color-primary)] via-[var(--color-primary)] to-[var(--color-primary)]"
-          style={{
-            opacity: 1,
-            backgroundImage: `linear-gradient(to bottom, rgba(35, 66, 78, ${heroGradientOpacity.from}), rgba(35, 66, 78, ${heroGradientOpacity.via}), rgba(35, 66, 78, ${heroGradientOpacity.to}))`,
-          }}
-        />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <FadeIn className="max-w-2xl">
-              <h1 className="mt-6 text-3xl font-black tracking-tight text-white sm:mt-8 sm:text-5xl lg:text-6xl">
-                Where Human{" "}
-                <span className="text-[var(--color-secondary)]">Potential</span>
-                .
-                <br />
-                Meets{" "}
-                <span className="text-[var(--color-secondary)]">
-                  Structured Development
-                </span>
-                .
-              </h1>
-              <p className="mt-6 max-w-xl text-sm leading-7 text-slate-200 sm:mt-8 sm:text-base sm:leading-8 lg:text-lg">
-                We design structured developmental interventions aligned with
-                measurable institutional and organisational outcomes. We do not
-                only conduct workshops. We engineer ecosystems which transform
-                employees into performance multipliers leading to enhanced
-                productivity & accelerated profits
-              </p>
+    {/* Hero */}
+    <section className="relative overflow-hidden bg-[var(--color-background)] pt-28 sm:pt-32 lg:pt-36">
+      {/* Decorative background geometry */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full border border-[var(--color-secondary)]/10"
+      />
 
-              <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
-                <CTAButton to="/programs">Explore Programs</CTAButton>
-                <CTAButton to="/contact" variant="ghost">
-                  Schedule Consultation
-                </CTAButton>
-              </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-20 -top-20 h-[300px] w-[300px] rounded-full border border-[var(--color-secondary)]/10"
+      />
 
-              {/* <div className="mt-16 grid gap-4 sm:grid-cols-3">
-                {impactStats.slice(0, 3).map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-[28px] border border-white/10 bg-white/10 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-sm"
-                  >
-                    <p className="text-sm uppercase tracking-[0.25em] text-slate-200">
-                      {stat.label}
-                    </p>
-                    <p className="mt-4 text-3xl font-bold text-white">{stat.value}</p>
-                  </div>
-                ))}
-              </div> */}
-            </FadeIn>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 left-1/3 h-[360px] w-[360px] rounded-full bg-[var(--color-secondary)]/5 blur-3xl"
+      />
 
-            {/* <FadeIn delay={0.1} className="relative">
-              <div className="rounded-[32px] border border-white/15 bg-white/10 p-6 shadow-2xl shadow-[#00000030] backdrop-blur-xl sm:p-8">
-                <div className="rounded-[24px] bg-white/95 p-6 shadow-sm">
-                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-secondary)]">
-                    Live cohort
-                  </p>
-                  <h2 className="mt-4 text-2xl font-bold text-[var(--color-primary)]">
-                    Certified Learning & Development Manager
-                  </h2>
-                  <p className="mt-4 text-sm leading-6 text-slate-600">
-                    Modern learning strategies for HR, L&D, and executive
-                    development with practical, human-centered training tools.
-                  </p>
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-3xl bg-[var(--color-background)] p-4 text-sm text-slate-600">
-                      <p className="font-semibold text-[var(--color-primary)]">â‚¹29,500 + 18% GST</p>
-                    </div>
-                    <div className="rounded-3xl bg-[var(--color-background)] p-4 text-sm text-slate-600">
-                      <p className="font-semibold text-[var(--color-primary)]">
-                        04 Weeks Live Â· 06 Weeks Blended
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </FadeIn> */}
-          </div>
-        </div>
-      </section>
-
-      <ProgramsCarousel />
-
-      {/* <section className="border-y border-[#DCECF5] bg-white py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <p className="text-sm font-semibold uppercase tracking-[0.32em] text-slate-500">
-              Trusted by institutions and people teams
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid min-h-[680px] items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-8">
+          {/* Editorial content */}
+          <FadeIn className="relative z-10 max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--color-secondary)] sm:text-sm">
+              Training&nbsp; · &nbsp;Consulting&nbsp; · &nbsp;Transformation&nbsp; · &nbsp;Placement
             </p>
-            <div className="grid gap-4 text-sm font-semibold text-[var(--color-primary)] sm:grid-cols-3 lg:grid-cols-6">
-              {trustedPartners.map((partner) => (
-                <div key={partner} className="rounded-full bg-[var(--color-background)] px-4 py-3 text-center">
-                  {partner}
-                </div>
-              ))}
+
+            <h1 className="mt-7 text-5xl font-black leading-[0.98] tracking-[-0.04em] text-[var(--color-primary)] sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
+              Where Human{" "}
+              <span className="text-[var(--color-secondary)]">
+                Potential
+              </span>
+              <br />
+              Meets
+              <br />
+              Structured Development.
+            </h1>
+
+            <div className="mt-8 h-px w-16 bg-[var(--color-secondary)]" />
+
+            <p className="mt-7 max-w-xl text-lg font-semibold leading-8 text-[var(--color-primary)] sm:text-xl">
+              Engineering Human Capital for Productivity Enhancement &
+              Organisational Excellence.
+            </p>
+
+            <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+              We design structured developmental interventions that strengthen
+              people, organisations, and institutions through behavioural,
+              emotional, and performance-focused development.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+              <CTAButton to="/services" variant="primary">
+                Explore Our Services
+              </CTAButton>
+
+              <CTAButton to="/contact" variant="secondary">
+                Schedule Consultation
+              </CTAButton>
+            </div>
+          </FadeIn>
+
+          {/* Human Potential visual */}
+          <FadeIn delay={0.15}>
+            <div className="relative -mx-4 sm:-mx-6 lg:-mr-24 lg:ml-0">
+              <HumanPotentialVisualV2 />
             </div>
           </FadeIn>
         </div>
-      </section> */}
+      </div>
 
-      <section className="bg-[var(--color-background)] py-10 sm:py-12">
+      {/* Bottom transition */}
+      <div
+        aria-hidden="true"
+        className="relative mx-auto mt-4 h-px max-w-7xl bg-[var(--color-border)]"
+      />
+    </section>
+
+      {/* Programs remain untouched for now */}
+      <ProgramsCarousel />
+
+      {/* Who We Are */}
+      <section className="overflow-hidden bg-[var(--color-background)] py-20 sm:py-24 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+            {/* Content */}
             <FadeIn>
-              <p className="mb-4 text-lg font-semibold tracking-[0.2em] text-[var(--color-secondary)] sm:text-2xl sm:tracking-[0.3em]">
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[var(--color-secondary)]">
                 Who We Are
               </p>
 
-              <p className="mt-2 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+              <h2 className="mt-5 max-w-xl text-3xl font-black tracking-tight text-[var(--color-primary)] sm:text-4xl lg:text-5xl">
+                Human Potential Meets{" "}
+                <span className="text-[var(--color-secondary)]">
+                  Structured Development
+                </span>
+              </h2>
+
+              <div className="mt-7 h-px w-16 bg-[var(--color-secondary)]" />
+
+              <p className="mt-7 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
                 {homepageSections.whoWeAre}
               </p>
 
-              <h3 className="mt-4 text-xl font-bold text-[var(--color-primary)] sm:text-2xl">
-                {homepageSections.intersectionIntro}
-              </h3>
+              <div className="mt-10">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
+                  {homepageSections.intersectionIntro}
+                </p>
 
-              <div className="mt-4 space-y-3">
-                {homepageSections.intersectionAreas.map((item) => (
-                  <div key={item.title} className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-soft-accent)]">
-                      <item.icon className="h-5 w-5 text-[var(--color-secondary)]" />
+                <div className="mt-5 grid gap-x-6 gap-y-4 sm:grid-cols-2">
+                  {homepageSections.intersectionAreas.map((item) => (
+                    <div
+                      key={item.title}
+                      className="flex items-start gap-3"
+                    >
+                      <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--color-soft-accent)]">
+                        <item.icon className="h-4 w-4 text-[var(--color-secondary)]" />
+                      </div>
+
+                      <span className="text-sm font-semibold leading-6 text-[var(--color-primary)]">
+                        {item.title}
+                      </span>
                     </div>
-
-                    <span className="text-base font-semibold text-[var(--color-primary)] sm:text-lg">
-                      {item.title}
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.1}>
+            {/* Conceptual visual */}
+            <FadeIn delay={0.15}>
               <div className="relative">
-                <div className="absolute -right-4 -top-4 h-24 w-24 rounded-[10px] bg-[var(--color-muted)]/30 blur-3xl sm:-right-6 sm:-top-6 sm:h-32 sm:w-32" />
+                <div className="absolute inset-10 rounded-full bg-[var(--color-secondary)]/10 blur-3xl" />
 
-                <div className="overflow-hidden rounded-[15px] border border-[var(--color-border)] bg-white shadow-[0_28px_70px_rgba(35,66,78,0.12)]">
-                  <img
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-                    alt="Empowering Minds"
-                    className="h-[280px] w-full object-cover sm:h-[360px] lg:h-[450px]"
-                  />
+                <div className="relative rounded-[2rem] border border-[var(--color-border)] bg-white/70 p-5 shadow-[0_28px_70px_rgba(35,66,78,0.10)] backdrop-blur-sm sm:p-8">
+                  <HumanPotentialVisual />
                 </div>
               </div>
             </FadeIn>
@@ -189,166 +153,336 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24">
+      {/* Human Capital Challenge */}
+      <section className="relative overflow-hidden bg-[var(--color-primary)] py-20 text-white sm:py-24 lg:py-28">
+        <div className="absolute -right-32 top-20 h-72 w-72 rounded-full bg-[var(--color-secondary)]/10 blur-3xl" />
+        <div className="absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+            {/* Intro */}
+            <FadeIn>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[var(--color-secondary)]">
+                The Contemporary Performance Landscape
+              </p>
+
+              <h2 className="mt-5 max-w-xl text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
+                {homepageSections.challengeTitle}
+              </h2>
+
+              <div className="mt-8 h-px w-20 bg-[var(--color-secondary)]" />
+
+              <p className="mt-8 max-w-xl text-base leading-8 text-slate-200 sm:text-lg">
+                {homepageSections.challengeIntro}
+              </p>
+            </FadeIn>
+
+            {/* Pressure points */}
+            <FadeIn delay={0.1}>
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-secondary)]">
+                  Common performance pressures include
+                </p>
+
+                <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
+                  {homepageSections.challengePoints.map((point, index) => (
+                    <div
+                      key={point}
+                      className="group flex items-center gap-5 py-5"
+                    >
+                      <span className="w-8 shrink-0 text-sm font-semibold text-[var(--color-secondary)]">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+
+                      <p className="text-base font-medium text-white transition-transform duration-300 group-hover:translate-x-1 sm:text-lg">
+                        {point}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Strategic implication */}
+          <FadeIn className="mt-16 border-t border-white/10 pt-10 sm:mt-20 sm:pt-12">
+            <div className="max-w-4xl">
+              <p className="text-xl font-semibold leading-9 text-white sm:text-2xl sm:leading-10">
+                While technical capability continues to grow, performance
+                sustainability now depends on{" "}
+                <span className="text-[var(--color-secondary)]">
+                  emotional regulation, resilience, and behavioural alignment.
+                </span>
+              </p>
+
+              <p className="mt-5 text-base leading-7 text-slate-300">
+                Organisations that proactively strengthen these capabilities gain
+                measurable strategic advantage.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="bg-[var(--color-background)] py-20 sm:py-24 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr_1fr] lg:items-center lg:gap-8">
+            {/* Left */}
+            <div className="space-y-6">
+              <FadeIn>
+                <div className="border-l-2 border-[var(--color-secondary)] pl-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-secondary)]">
+                    The Missing Capability
+                  </p>
+
+                  <p className="mt-4 text-base leading-8 text-slate-600">
+                    {homepageSections.copingIntro}
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.1}>
+                <div className="rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-sm">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-secondary)]">
+                    Why it matters
+                  </p>
+
+                  <p className="mt-3 text-base leading-7 text-[var(--color-primary)]">
+                    This capability directly determines productivity, resilience,
+                    and long-term success.
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Centre */}
+            <FadeIn delay={0.1}>
+              <div className="relative flex min-h-[300px] items-center justify-center">
+                <div className="absolute h-64 w-64 rounded-full border border-[var(--color-secondary)]/20" />
+                <div className="absolute h-52 w-52 rounded-full border border-[var(--color-secondary)]/20" />
+
+                <div className="relative flex h-44 w-44 flex-col items-center justify-center rounded-full bg-[var(--color-primary)] px-6 text-center shadow-[0_25px_60px_rgba(35,66,78,0.18)] sm:h-52 sm:w-52">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-secondary)]">
+                    Coping Architecture
+                  </p>
+
+                  <h2 className="mt-3 text-2xl font-black leading-tight text-white sm:text-3xl">
+                    The Untaught Skill
+                  </h2>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Right */}
+            <div className="space-y-4">
+              {[
+                "Regulate stress",
+                "Handle rejection",
+                "Adapt to uncertainty and change",
+                "Maintain clarity under pressure",
+                "Sustain consistent performance",
+              ].map((point, index) => (
+                <FadeIn key={point} delay={0.1 + index * 0.05}>
+                  <div className="group flex items-center gap-4 rounded-xl border border-[var(--color-border)] bg-white px-5 py-4 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:shadow-md">
+                    <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--color-secondary)] transition-transform duration-300 group-hover:scale-125" />
+
+                    <p className="font-semibold leading-6 text-[var(--color-primary)]">
+                      {point}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+
+          {/* Closing statement */}
+          <FadeIn className="mt-16 text-center sm:mt-20">
+            <div className="mx-auto max-w-2xl">
+              <div className="mx-auto mb-6 h-px w-16 bg-[var(--color-secondary)]" />
+
+              <p className="text-xl font-bold leading-8 text-[var(--color-primary)] sm:text-2xl">
+                Resilience is not optional.
+              </p>
+
+              <p className="mt-2 text-lg font-semibold text-[var(--color-secondary)]">
+                It is strategic capital.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Who We Serve */}
+      <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            eyebrow="Discover Our Approach"
-            title="Transformation that starts with clarity and ends in action"
+            eyebrow="Who We Serve"
+            title="Human capital development across four key areas"
+            align="center"
           />
-          <FadeIn className="mt-8 max-w-3xl">
-            <p className="text-base leading-8 text-slate-600 sm:text-lg">
-              {homepageSections.approachIntro}
-            </p>
-          </FadeIn>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-            {homepageSections.approachPillars.map((pillar, index) => (
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {homepageSections.audiences.map((audience, index) => (
               <FeatureCard
-                key={pillar.title}
-                icon={pillar.icon}
-                title={pillar.title}
-                description={pillar.description}
+                key={audience.title}
+                icon={audience.icon}
+                title={audience.title}
+                description={audience.description}
                 delay={index * 0.06}
+                variant="dark"
               />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="Testimonials"
-            title="What our partners say about the experience"
-            description="Stories from institutions and teams who have seen stronger confidence, alignment, and growth."
-          />
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {testimonials.map((item, index) => (
-              <TestimonialCard key={item.name} {...item} delay={index * 0.08} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Measurable Outcomes */}
+      <section
+        className="relative overflow-hidden py-20 text-white sm:py-24 lg:py-28"
+        style={{ background: "var(--gradient-brand)" }}
+      >
+        {/* Decorative background elements */}
+        <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full border border-white/10" />
+        <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full border border-white/10" />
+        <div className="absolute -bottom-40 -left-32 h-96 w-96 rounded-full bg-[var(--color-secondary)]/10 blur-3xl" />
 
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="Impact"
-            title="Measurable growth across people, programs, and partnerships"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {impactStats.map((stat, index) => (
-              <StatCard key={stat.label} {...stat} delay={index * 0.06} />
-            ))}
-          </div>
-        </div>
-      </section>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Heading */}
+          <FadeIn className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#e6b47d]">
+              Outcomes
+            </p>
 
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="Trainer Profile"
-            title="Meet the experts behind every learning experience"
-            description="Our facilitators combine behavioural insight, practical frameworks, and delivery experience across institutions and teams."
-          />
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {trainers.map((trainer, index) => (
-              <FadeIn
-                key={trainer.id}
-                delay={index * 0.08}
-                className="overflow-hidden rounded-[28px] border border-[var(--color-border)] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <button
-                  type="button"
-                  onClick={() => setSelectedTrainer(trainer)}
-                  className="block w-full cursor-pointer text-left"
-                >
-                  <img
-                    src={trainer.image}
-                    alt={trainer.name}
-                    className="h-72 w-full object-cover"
-                  />
-                  <div className="p-6">
-                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--color-secondary)]">
-                      {trainer.role}
-                    </p>
-                    <h3 className="mt-3 text-2xl font-black tracking-tight text-[var(--color-primary)]">
-                      {trainer.name}
-                    </h3>
-                    <p className="mt-4 text-sm leading-7 text-slate-600">
-                      {trainer.shortBio}
-                    </p>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
+              {homepageSections.outcomesTitle}
+            </h2>
+
+            <div className="mx-auto mt-6 h-px w-16 bg-[var(--color-secondary)]" />
+
+            <p className="mt-6 text-base leading-8 text-slate-200 sm:text-lg">
+              Human capital, when engineered correctly, becomes a measurable
+              performance asset.
+            </p>
+          </FadeIn>
+
+          {/* Outcomes */}
+          <div className="mx-auto mt-14 max-w-5xl">
+            <div className="grid md:grid-cols-2">
+              {homepageSections.outcomes.map((outcome, index) => (
+                <FadeIn key={outcome} delay={index * 0.06}>
+                  <div
+                    className={`group flex min-h-[150px] items-start gap-6 border-white/15 px-2 py-7 sm:px-8 sm:py-9 ${
+                      index % 2 === 0 ? "md:border-r" : ""
+                    } ${
+                      index < homepageSections.outcomes.length - 2
+                        ? "md:border-b"
+                        : ""
+                    }`}
+                  >
+                    <span className="shrink-0 text-sm font-semibold tracking-[0.15em] text-[#d89a5c]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <div>
+                      <p className="text-lg font-bold leading-7 text-white transition-transform duration-300 group-hover:translate-x-1 sm:text-xl">
+                        {outcome}
+                      </p>
+                    </div>
                   </div>
-                </button>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              ))}
+            </div>
           </div>
-          <FadeIn className="mt-10 flex justify-start">
-            <CTAButton to="/trainer-profile" variant="ghost">
-              Explore Trainer Profile
-            </CTAButton>
+
+          {/* Closing statement */}
+          <FadeIn className="mx-auto mt-16 max-w-3xl text-center sm:mt-20">
+            <div className="mx-auto h-px w-16 bg-white/20" />
+
+            <p className="mt-8 text-2xl font-bold leading-9 text-white sm:text-3xl sm:leading-10">
+              The objective is not simply development.
+            </p>
+
+            <p className="mt-3 text-xl font-semibold leading-8 text-[#e6b47d] sm:text-2xl">
+              It is measurable performance enhancement.
+            </p>
           </FadeIn>
         </div>
       </section>
 
-      <section className="py-24">
+      {/* Why Empowering Minds */}
+      <section className="bg-[var(--color-background)] py-20 sm:py-24 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="Empower U"
-            title="A signature initiative for personal and professional growth"
-            description={empowerUContent.intro}
-          />
-          <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-            <FadeIn className="rounded-[32px] bg-[var(--color-primary)] p-8 text-white shadow-[0_28px_70px_rgba(35,66,78,0.18)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-muted)]">
-                Growth Platform
-              </p>
-              <h3 className="mt-4 text-3xl font-black tracking-tight">
-                {empowerUContent.heroTitle}
-              </h3>
-              <p className="mt-4 max-w-xl text-base leading-8 text-slate-200">
-                {empowerUContent.heroDescription}
-              </p>
-              <div className="mt-8">
-                <CTAButton to="/empower-u" variant="ghost">
-                  Discover Empower U
-                </CTAButton>
-              </div>
-            </FadeIn>
-            <div className="grid gap-6">
-              {empowerUContent.focusAreas.slice(0, 3).map((area, index) => {
-                const Icon = area.icon;
+          {/* Heading */}
+          <FadeIn className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[var(--color-secondary)]">
+              Why Empowering Minds?
+            </p>
 
-                return (
-                  <FadeIn
-                    key={area.title}
-                    delay={index * 0.06}
-                    className="rounded-[28px] border border-[var(--color-border)] bg-white p-6 shadow-sm"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-soft-accent)] text-[var(--color-secondary)]">
-                      <Icon size={22} />
-                    </div>
-                    <h3 className="mt-5 text-xl font-bold text-[var(--color-primary)]">
-                      {area.title}
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-[var(--color-primary)] sm:text-4xl lg:text-5xl">
+              Structured development.
+              <br />
+              <span className="text-[var(--color-secondary)]">
+                Designed for transformation.
+              </span>
+            </h2>
+
+            <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg">
+              Our approach is built around structured developmental systems rather
+              than one-time interventions.
+            </p>
+          </FadeIn>
+
+          {/* Principles */}
+          <div className="mt-16 grid gap-x-12 gap-y-0 md:grid-cols-2 lg:mt-20">
+            {homepageSections.whyPoints.map((point, index) => (
+              <FadeIn key={point.title} delay={index * 0.06}>
+                <article
+                  className={`group flex gap-6 border-[var(--color-border)] py-8 ${
+                    index < 4 ? "border-b" : ""
+                  } ${
+                    index % 2 === 0 ? "md:border-r md:pr-10" : "md:pl-10"
+                  }`}
+                >
+                  {/* Decorative marker */}
+                  <div className="relative shrink-0 pt-1">
+                    <div className="h-3 w-3 rounded-full bg-[var(--color-secondary)] transition-transform duration-300 group-hover:scale-150" />
+
+                    <div className="absolute left-1/2 top-5 h-full w-px -translate-x-1/2 bg-[var(--color-border)] group-last:hidden" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-[var(--color-primary)] transition-colors duration-300 group-hover:text-[var(--color-secondary)] sm:text-2xl">
+                      {point.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">
-                      {area.description}
+
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
+                      {point.description}
                     </p>
-                  </FadeIn>
-                );
-              })}
-            </div>
+                  </div>
+                </article>
+              </FadeIn>
+            ))}
           </div>
+
+          {/* Closing statement */}
+          <FadeIn className="mx-auto mt-16 max-w-3xl text-center sm:mt-20">
+            <div className="mx-auto mb-6 h-px w-12 bg-[var(--color-secondary)]" />
+
+            <p className="text-lg font-semibold leading-8 text-[var(--color-primary)] sm:text-xl">
+              We build developmental systems —
+              <span className="text-[var(--color-secondary)]">
+                {" "}
+                not one-time workshops.
+              </span>
+            </p>
+          </FadeIn>
         </div>
       </section>
 
       <CTASection
-        title="Ready to create meaningful transformation?"
-        description="Whether you are developing leaders, preparing students, or strengthening institutions, we can shape a learning experience that fits your goals."
-      />
-
-      <TrainerModal
-        trainer={selectedTrainer}
-        onClose={() => setSelectedTrainer(null)}
+        title="Build stronger human capital."
+        description="Whether you are strengthening an educational institution, developing an organisation, preparing students, or supporting entrepreneurial performance, Empowering Minds designs structured interventions around your objectives."
+        variant="brand"
       />
     </main>
   );

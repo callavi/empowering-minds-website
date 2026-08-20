@@ -2,7 +2,7 @@ import {
   ArrowUpRight,
   BriefcaseBusiness,
   Building2,
-  Compass,
+  Brain,
   GraduationCap,
   HeartHandshake,
   Lightbulb,
@@ -12,10 +12,7 @@ import {
   Target,
   Trophy,
   Users,
-   Eye,
   TrendingUp,
-  Leaf,
-  BookOpenCheck,
 } from "lucide-react";
 
 export const navLinks = [
@@ -81,79 +78,127 @@ export const trainerPageContent = {
 
 export const homepageSections = {
   whoWeAre:
-    "Empowering Minds is a Human Capital Development initiative focused on strengthening institutions and organisations through structured behavioural, emotional and mind-based transformation.",
+    "Empowering Minds is a Human Capital Development initiative focused on strengthening institutions and organisations through structured behavioural, emotional and mind based transformation.",
+
   intersectionIntro: "We operate at the intersection of",
+
   intersectionAreas: [
-  {
-    title: "Awareness",
-    description:
-      "Creating awareness through reflective and developmental interventions that strengthen understanding, sensitivity, and perspective.",
-    icon: Eye,
-  },
-  {
-    title: "Clarity",
-    description:
-      "Helping individuals gain clarity in thinking, communication, and emotional understanding for stronger decision-making and growth.",
-    icon: Lightbulb,
-  },
-  {
-    title: "Capacity Building",
-    description:
-      "Building skills, competencies, and readiness through structured learning experiences and developmental engagement.",
-    icon: TrendingUp,
-  },
-  {
-    title: "Sustainable Impact",
-    description:
-      "Designing interventions that create long-term value, behavioural transformation, and measurable outcomes beyond short-term change.",
-    icon: Leaf,
-  },
-  {
-    title: "Real World Learning",
-    description:
-      "Practical learning experiences grounded in real-life workplace, institutional, and performance-based challenges.",
-    icon: BookOpenCheck,
-  },
- {
-    title: "Corporate Conditioning",
-    description:
-      "Preparing individuals and teams to align with workplace expectations, business culture, adaptability, and professional performance standards.",
-    icon: BriefcaseBusiness,
-  },
-  {
-    title: "Institutional Development",
-    description:
-      "Strengthening institutions through people-focused, system-oriented, and growth-driven developmental interventions.",
-    icon: Building2,
-  },
-],
-  approachIntro:
-    "Our approach is designed to move participants from insight to action. Every engagement begins with context, builds capability through application, and stays focused on what shifts behavior in the real world.",
-  approachPillars: [
     {
-      title: "Awareness",
-      description: "Build clarity around mindset, context, and the patterns shaping growth.",
-      icon: Compass,
+      title: "Applied Psychology",
+      icon: Brain,
     },
     {
-      title: "Capability",
-      description: "Develop skills through frameworks, tools, and guided practice.",
+      title: "Behavioural Science",
+      icon: Users,
+    },
+    {
+      title: "Emotional Intelligence",
+      icon: HeartHandshake,
+    },
+    {
+      title: "Neuro-Linguistic Programming (NLP)",
       icon: Lightbulb,
     },
     {
-      title: "Confidence",
-      description: "Create the assurance to apply new learning in visible, meaningful ways.",
-      icon: ShieldCheck,
+      title: "Performance Acceleration Frameworks",
+      icon: TrendingUp,
+    },
+  ],
+
+  approachTitle: "Engineering Human Capital for Performance",
+
+  approachIntro:
+    "We design structured developmental interventions aligned with measurable institutional and organisational outcomes. We do not only conduct workshops. We engineer ecosystems which transform employees into performance multipliers, leading to enhanced productivity and accelerated profits.",
+
+  challengeTitle: "The Evolving Human Capital Challenge",
+
+  challengeIntro:
+    "Across educational institutions and corporate organisations, the psychological demands of modern environments are intensifying.",
+
+  challengePoints: [
+    "Rising stress exposure",
+    "Limited structured coping mechanisms",
+    "Emotional fatigue under sustained pressure",
+    "Increasing complexity in leadership responsibilities",
+    "Communication misalignment within teams",
+    "Burnout-driven productivity fluctuations",
+  ],
+
+  copingTitle: "Coping Architecture: The Untaught Skill",
+
+  copingIntro:
+    "The ability to regulate stress, handle rejection, adapt to uncertainty and change, maintain clarity under pressure, and sustain consistent performance is rarely structured into formal systems. Yet it directly determines productivity, resilience, and long-term success.",
+
+  audiences: [
+    {
+      title: "Educational Institutions",
+      description:
+        "We architect human capital development to prepare students for professional environments while strengthening faculty, academic leaders, administrative teams, and institutional management.",
+      icon: GraduationCap,
     },
     {
-      title: "Impact",
-      description: "Translate development into stronger performance, leadership, and outcomes.",
-      icon: LineChart,
+      title: "Corporate Organisations",
+      description:
+        "We help organisations strengthen emotional regulation, performance stability, leadership, collaborative execution, strategic clarity, and behavioural alignment.",
+      icon: Building2,
     },
     {
-      title: "Sustainability",
-      description: "Embed habits and systems that help transformation last beyond the workshop.",
+      title: "Entrepreneurial Performance Conditioning",
+      description:
+        "We design structured psychological performance systems that strengthen risk tolerance, emotional endurance, decision clarity, resilience, and founder stability.",
+      icon: BriefcaseBusiness,
+    },
+    {
+      title: "Internship & Placement",
+      description:
+        "Our Power Internship & Placement Wing provides corporate conditioning, industry readiness, practical exposure, career guidance, interview preparation, skill enhancement, and industry connections.",
       icon: Target,
+    },
+  ],
+
+  outcomesTitle: "Measurable Outcomes",
+
+  outcomes: [
+    "Enhanced productivity",
+    "Performance optimization",
+    "Reduced stress-driven inefficiencies",
+    "Strengthened leadership pipelines",
+    "Improved workplace cohesion",
+    "Sustainable institutional growth",
+  ],
+
+  whyTitle: "Why Empowering Minds?",
+
+  whyPoints: [
+    {
+      title: "Structured, Not Generic",
+      description:
+        "Every intervention is customized to institutional or organisational objectives.",
+    },
+    {
+      title: "Psychology-Led Frameworks",
+      description:
+        "Grounded in Applied Psychology, Behavioural Science, and NLP.",
+    },
+    {
+      title: "Coping Architecture Integration",
+      description:
+        "We strengthen resilience as a strategic performance capability.",
+    },
+    {
+      title: "Dual Ecosystem Expertise",
+      description:
+        "Experience across educational institutions and corporate organisations.",
+    },
+    {
+      title: "Measurable Performance Focus",
+      description:
+        "Our objective is not attendance. It is performance enhancement.",
+    },
+    {
+      title: "Long-Term Human Capital Strategy",
+      description:
+        "We build developmental systems, not one-time workshops.",
     },
   ],
 };

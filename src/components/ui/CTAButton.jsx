@@ -1,29 +1,65 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const variants = {
+  primary: `
+    bg-[var(--color-secondary)]
+    text-white
+    shadow-[var(--shadow-warm)]
+    hover:bg-[#8d5728]
+    hover:-translate-y-0.5
+  `,
+
+  secondary: `
+    border border-[var(--color-border)]
+    bg-[var(--color-surface)]
+    text-[var(--color-primary)]
+    shadow-[var(--shadow-sm)]
+    hover:bg-[var(--color-background)]
+    hover:-translate-y-0.5
+  `,
+
+  ghost: `
+    border border-white/25
+    bg-white/10
+    text-white
+    hover:bg-white/20
+    hover:-translate-y-0.5
+  `,
+};
+
 export default function CTAButton({
   to = "/contact",
   children,
   variant = "primary",
   className = "",
 }) {
-  const styles = {
-    primary:
-      "bg-[var(--color-secondary)] text-white hover:bg-[#8d5728] shadow-[0_16px_35px_rgba(169,106,45,0.22)]",
-    secondary:
-      "border border-[var(--color-border)] bg-white text-[var(--color-primary)] hover:bg-[var(--color-background)]",
-    ghost:
-      "border border-white/25 bg-white/10 text-white hover:bg-white/20",
-  };
+  const styles = variants[variant] ?? variants.primary;
 
   return (
     <Link
       to={to}
-      className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold transition sm:w-auto sm:px-6 ${styles[variant]} ${className}`}
+      className={`
+        group inline-flex w-full items-center justify-center
+        gap-2 rounded-[var(--radius-pill)]
+        px-5 py-3 text-center text-sm font-semibold
+        transition duration-[var(--transition-base)]
+        ease-[var(--ease-brand)]
+        sm:w-auto sm:px-6
+        ${styles}
+        ${className}
+      `}
     >
-      {children}
-      <ArrowRight size={16} />
+      <span>{children}</span>
+
+      <ArrowRight
+        size={16}
+        className="
+          transition-transform
+          duration-[var(--transition-fast)]
+          group-hover:translate-x-1
+        "
+      />
     </Link>
   );
-
 }
