@@ -7,7 +7,6 @@ import {
   HeartHandshake,
   Lightbulb,
   LineChart,
-  ShieldCheck,
   Sparkles,
   Target,
   Trophy,
@@ -19,7 +18,7 @@ export const navLinks = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Programs", to: "/programs" },
-  { label: "Empower U", to: "/empower-u" },
+  { label: "Empowering U", to: "/empower-u" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -564,78 +563,30 @@ export const aboutContent = {
   ],
 };
 
-export const empowerUContent = {
-  heroTitle: "A growth initiative for confidence, capability, and career momentum.",
-  heroDescription:
-    "Empower U is a signature development initiative by Empowering Minds designed to strengthen how students, early professionals, and emerging leaders communicate, think, and show up in high-opportunity environments.",
-  intro:
-    "Built as a practical growth platform, Empower U blends mindset work with real-world readiness. It helps participants develop confidence, communication, employability, and leadership presence through guided learning experiences that move from self-awareness to visible application.",
-  focusAreas: [
-    {
-      title: "Communication & Confidence",
-      description:
-        "Build clarity in expression, reduce hesitation, and strengthen presence in classrooms, interviews, and workplace conversations.",
-      icon: HeartHandshake,
-    },
-    {
-      title: "Career Readiness",
-      description:
-        "Develop interview readiness, professional etiquette, and the ability to position strengths with confidence.",
-      icon: BriefcaseBusiness,
-    },
-    {
-      title: "Leadership Mindset",
-      description:
-        "Strengthen ownership, initiative, and decision-making habits that prepare participants to lead with maturity.",
-      icon: Sparkles,
-    },
-    {
-      title: "Personal Effectiveness",
-      description:
-        "Sharpen focus, emotional regulation, self-management, and reflective practices that support consistent growth.",
-      icon: Target,
-    },
-    {
-      title: "Workplace Readiness",
-      description:
-        "Prepare for real-world expectations around collaboration, adaptability, accountability, and execution.",
-      icon: ShieldCheck,
-    },
-  ],
-  audienceGroups: [
-    "Students",
-    "Fresh graduates",
-    "Early professionals",
-    "Aspiring leaders",
-  ],
-  deliveryFormats: [
-    "Workshops",
-    "Bootcamps",
-    "Guided cohorts",
-    "Institutional interventions",
-  ],
-};
-
 export const contactDetails = {
-  phone: "+91 9794278786",
-  email: "contact@empoweringminds.in",
-  address: "Empowering Minds, 86 VIP Road, Yamuna Apartment, Kolkata 700048, India",
+  phones: ["+91 7908466757", "+91 9874383391"],
+  email: "empoweringminds19@gmail.com",
+  address: [
+    "Yamuna Building, 86 Golaghata Road",
+    "Dakshindari, South Dumdum",
+    "Kolkata – 700048",
+  ],
 };
 
 export const faqs = [
   {
-    question: "Do you offer customized programs?",
+    question: "Who does Empowering Minds work with?",
     answer:
-      "Yes. We tailor engagements based on your audience, business or institutional context, and desired outcomes.",
+      "We work with educational institutions, corporate organisations, professionals, and entrepreneurs through structured development interventions.",
   },
   {
-    question: "Can sessions be delivered virtually?",
+    question: "Can interventions be customized?",
     answer:
-      "Absolutely. We support onsite, virtual, and blended formats depending on the program design.",
+      "Yes. Our interventions are customized around the needs and objectives of the institution or organisation.",
   },
   {
-    question: "Who are your programs designed for?",
+    question: "What areas do you work on?",
     answer:
-      "Our programs support students, faculty, academic leaders, HR teams, managers, and senior leadership groups.",
+      "Our work spans performance, emotional intelligence, communication, leadership, behavioural alignment, stress management, interpersonal effectiveness, and other professional development areas.",
   },
 ];

@@ -5,7 +5,6 @@ import Navbar from "./components/common/Navbar";
 import WhatsAppFloat from "./components/common/WhatsAppFloat";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import EmpowerU from "./pages/EmpowerU";
 import Home from "./pages/Home";
 import Programs from "./pages/Programs";
 import Services from "./pages/Services";
@@ -20,7 +19,6 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/programs" element={<Programs />} />
-        <Route path="/empower-u" element={<EmpowerU />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <WhatsAppFloat />
