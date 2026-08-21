@@ -19,7 +19,6 @@ export const navLinks = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Programs", to: "/programs" },
-  { label: "Trainer Profile", to: "/trainer-profile" },
   { label: "Empower U", to: "/empower-u" },
   { label: "Contact", to: "/contact" },
 ];
@@ -33,48 +32,6 @@ export const trustedPartners = [
   "BridgePoint Learning",
 ];
 
-export const trainerProfile = {
-  name: "Ira Saha",
-  role: "Founder, Trainer & Human Capital Strategist",
-  image:
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
-  intro:
-  "Over years of working with students, educators, professionals, and institutional leaders, Empowering Minds was founded to integrate Applied Psychology and structured Human Resource Development into academic and corporate environments—strengthening coping mechanisms, emotional regulation, leadership maturity, communication effectiveness, and performance enhancement to create measurable and sustainable transformation.",
-  bio: "Her work blends leadership development, facilitation, coaching, and capability building into learning journeys.",
-  highlights: [
-    "20+ years across education, HR, and capability-building ecosystems",
-    "Designed high-impact interventions for corporate teams and academic institutions",
-    "Known for practical frameworks that build confidence, ownership, and visible outcomes",
-  ],
-};
-
-export const trainerPageContent = {
-  heroTitle: "Meet the facilitators who turn insight into visible growth.",
-  heroDescription:
-    "Our trainers bring together behavioural understanding, institutional context, and practical delivery experience to create learning journeys that feel credible, engaging, and outcomes-focused.",
-  learnPoints: [
-    {
-      title: "Practical industry and institutional exposure",
-      description:
-        "Our facilitators work across campuses, leadership teams, and people functions, so every session stays grounded in real contexts.",
-    },
-    {
-      title: "Behavioural transformation at the center",
-      description:
-        "We go beyond information delivery to build awareness, habits, communication confidence, and applied behaviour change.",
-    },
-    {
-      title: "Structured learning outcomes",
-      description:
-        "Programs are designed with clear developmental milestones, reflective exercises, and outcomes participants can track.",
-    },
-    {
-      title: "Real-world implementation mindset",
-      description:
-        "Every intervention is built to help learners apply frameworks, conversations, and decisions in their day-to-day environments.",
-    },
-  ],
-};
 
 export const homepageSections = {
   whoWeAre:
@@ -203,73 +160,114 @@ export const homepageSections = {
   ],
 };
 
-export const testimonials = [
-  {
-    quote:
-      "The sessions were practical, energizing, and immediately useful for our leadership pipeline. We saw stronger collaboration within weeks.",
-    name: "Ananya Mehta",
-    role: "HR Head, Apex Education Group",
-  },
-  {
-    quote:
-      "Our students responded brilliantly to the confidence-building modules. The delivery felt modern, personal, and deeply relevant.",
-    name: "Rahul Menon",
-    role: "Dean, Northstar Business School",
-  },
-  {
-    quote:
-      "Empowering Minds helped our managers lead more intentionally. The frameworks were simple to adopt and strong in impact.",
-    name: "Shweta Kapoor",
-    role: "L&D Lead, Thrive Corporate Academy",
-  },
-];
-
-export const impactStats = [
-  { value: "12K+", label: "Learners reached across programs" },
-  { value: "150+", label: "Workshops and interventions delivered" },
-  { value: "40+", label: "Institutional and corporate partners" },
-  { value: "92%", label: "Participants reporting improved confidence" },
-];
-
 export const serviceGroups = [
   {
-    id: "human-capital-development",
-    title: "Human Capital Development",
+    id: "educational-institutions",
+    title: "Educational Institutions",
+    eyebrow: "For Institutions",
     description:
-      "People-first interventions that strengthen capability, performance, and long-term workforce growth.",
-    icon: Users,
-    services: ["Employee Development", "Capability Building", "Performance Enhancement"],
-  },
-  {
-    id: "leadership-programs",
-    title: "Leadership Programs",
-    description:
-      "Development pathways for leaders at every stage of influence and organizational responsibility.",
-    icon: Trophy,
-    services: ["Emerging Leaders", "Mid-Level Managers", "Senior Leadership"],
-  },
-  {
-    id: "student-development",
-    title: "Student Development",
-    description:
-      "Future-focused learning experiences that help students communicate, compete, and thrive.",
+      "We help educational institutions prepare students for professional environments while strengthening the people and systems that support them.",
     icon: GraduationCap,
-    services: [
-      "Communication Skills",
-      "Employability Skills",
-      "Career Readiness",
-      "Confidence Building",
+
+    areas: [
+      {
+        id: "student-development",
+        title: "Student Development Strategy",
+        description:
+          "We prepare students not only for examinations, but for professional environments through structured development in communication, confidence, leadership, emotional intelligence, and career readiness.",
+        modules: [
+          "Communication & Interpersonal Effectiveness",
+          "Interview Mastery & Resume Building",
+          "Leadership Development",
+          "Entrepreneurial Mindset Conditioning",
+          "Emotional Intelligence",
+          "Interpersonal Skills",
+          "Better Focus & Clear Goal Setting",
+          "Structured Stress Management",
+          "Coping Mechanism Development",
+          "Corporate Readiness",
+          "Leap to Success Framework",
+        ],
+      },
+
+      {
+        id: "faculty-institutional-staff",
+        title: "Faculty & Institutional Staff Development",
+        description:
+          "We develop behavioural and professional capabilities across faculty members, academic leaders, administrative teams, and institutional management.",
+        modules: [
+          "Communication Skills",
+          "Workplace Behavioural Alignment",
+          "Leadership Skills",
+          "Decision-Making Skills",
+          "Emotional Intelligence",
+          "Structured Stress Management",
+          "POSH Training",
+          "Image Management",
+          "Foundational Soft Skills",
+          "Effective Classroom Management",
+          "Engaging & Interactive Learning Techniques",
+          "AI Tools in Lead Generation for Business",
+        ],
+      },
     ],
   },
+
   {
-    id: "institutional-development",
-    title: "Institutional Development",
+    id: "corporate-organisations",
+    title: "Corporate Organisations",
+    eyebrow: "For Corporates",
     description:
-      "Strategic programs for faculty, academic leaders, and institutions navigating growth.",
+      "We help organisations strengthen human capability, leadership, behavioural alignment, and sustainable performance.",
     icon: Building2,
-    services: ["Faculty Development", "Academic Leadership", "Organizational Growth"],
+
+    areas: [
+      {
+        id: "human-capital-acceleration",
+        title: "Human Capital Acceleration",
+        description:
+          "Modern organisations require more than technical competence. We strengthen the behavioural and psychological capabilities that support stable, sustainable performance.",
+        modules: [
+          "Peak Performance",
+          "Emotional Intelligence",
+          "Neuro-Linguistic Programming (NLP)",
+          "Structured Stress Management",
+          "Image Management",
+          "Corporate Readiness",
+          "Memory Enhancement",
+          "Leadership Skills",
+          "POSH Training",
+          "Foundational Soft Skills",
+          "Communication Skills",
+          "Workplace Behavioural Alignment",
+          "Engaging & Interactive Learning Techniques",
+        ],
+      },
+
+      {
+        id: "entrepreneurial-performance",
+        title: "Entrepreneurial Performance Conditioning",
+        description:
+          "We help entrepreneurs and business leaders strengthen the psychological and interpersonal capabilities needed to navigate uncertainty, make decisions, and sustain performance.",
+        modules: [
+          "Peak Performance",
+          "Emotional Intelligence",
+          "Neuro-Linguistic Programming (NLP)",
+          "Advanced Stress Management",
+          "Coping Mechanism Mastery",
+          "Interpersonal Effectiveness",
+          "Conflict Resolution",
+          "Communication Mastery",
+          "Executive Presence",
+          "Work-Life Integration",
+          "POSH Training",
+          "Industry-Specific Workshops",
+        ],
+      },
+    ],
   },
 ];
+
 
 export const programs = [
   {
@@ -499,85 +497,72 @@ export const categories = [
 ];
 
 export const aboutContent = {
-  heroTitle: "Learning experiences that move people and institutions forward.",
+  heroTitle: "Where Human Potential Meets Structured Development",
+
   heroText:
-    "Empowering Minds partners with organizations, campuses, and leaders to create transformation that is thoughtful, practical, and measurable.",
-  mission:
-    "To design development experiences that unlock confidence, capability, and sustainable impact.",
-  vision:
-    "To be a trusted growth partner for institutions and teams building a stronger future through people development.",
-  story:
-    "Empowering Minds was created to bridge a gap often felt in learning and development: the gap between inspiring ideas and real-world application. Our journey began with a simple commitment to create development experiences that are grounded, action-oriented, and deeply human.",
-  values: [
-    "Human-centered growth",
-    "Practical transformation",
-    "Integrity in facilitation",
-    "Partnership over prescription",
-    "Sustainable impact",
-  ],
-  reasons: [
-    "Programs built for real-world behavior change",
-    "Strong mix of corporate and academic understanding",
-    "Flexible formats across workshops, cohorts, and strategic interventions",
+    "Empowering Minds is a Human Capital Development initiative focused on strengthening institutions and organisations through structured behavioural, emotional, and mind-based transformation.",
+
+  whoWeAreTitle: "Who We Are",
+
+  whoWeAre:
+    "We work at the intersection of Applied Psychology, Behavioural Science, Emotional Intelligence, Neuro-Linguistic Programming (NLP), and Performance Acceleration Frameworks.",
+
+  approach:
+    "We design structured developmental interventions aligned with measurable institutional and organisational outcomes. We do not simply conduct workshops. We engineer ecosystems that help people become performance multipliers, leading to enhanced productivity and stronger organisational outcomes.",
+
+  founderTitle: "A Note from the Founder",
+
+  founderName: "Ira Saha",
+
+  founderRole: "Founder, Empowering Minds",
+
+  founderNote:
+    "Over years of working with students, educators, professionals, and institutional leaders, one consistent insight emerged: HR is one of the most important assets of any organisation, yet it is often not given due importance.",
+
+  founderNoteContinued:
+    "The focus is often placed on technical knowledge and skills. Technical competence may open doors, but behavioural alignment sustains success.",
+
+  founderStory:
+    "Empowering Minds was founded to integrate Applied Psychology and structured Human Resource Development into academic and corporate environments. Our work focuses on strengthening coping mechanisms, emotional regulation, leadership maturity, communication effectiveness, and performance enhancement to improve overall productivity and profitability.",
+
+  founderClosing:
+    "We do not create motivation. We create measurable transformation. When internal alignment is engineered correctly, performance becomes sustainable.",
+
+  whyTitle: "Why Empowering Minds?",
+
+  whyPoints: [
+    {
+      title: "Structured, Not Generic",
+      description:
+        "Every intervention is customized to institutional or organisational objectives.",
+    },
+    {
+      title: "Psychology-Led Frameworks",
+      description:
+        "Our work is grounded in Applied Psychology, Behavioural Science, and NLP.",
+    },
+    {
+      title: "Coping Architecture Integration",
+      description:
+        "We strengthen resilience as an essential driver of sustainable performance.",
+    },
+    {
+      title: "Dual Ecosystem Expertise",
+      description:
+        "Our work spans educational institutions and corporate organisations.",
+    },
+    {
+      title: "Measurable Performance Focus",
+      description:
+        "Our objective is not attendance. It is performance enhancement.",
+    },
+    {
+      title: "Long-Term Human Capital Strategy",
+      description:
+        "We build developmental systems, not one-time workshops.",
+    },
   ],
 };
-
-export const trainers = [
-  {
-    id: 1,
-    name: "Dr. Ritu Sharma",
-    role: "Founder & Lead Trainer",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
-    shortBio:
-      "With two decades of corporate and institutional experience, Dr. Ritu Sharma helps leaders, faculty, students, and people teams move from potential to practical transformation.",
-    fullBio:
-      "Dr. Ritu Sharma brings a deep blend of leadership development, learning design, and institutional consulting experience to Empowering Minds. Her facilitation approach combines behavioural insight with structured capability-building so participants can strengthen confidence, leadership presence, communication, and execution in ways that are visible and sustainable.",
-    expertise: ["Leadership Development", "L&D", "OD", "Human Capital Development"],
-    experience:
-      "20+ years across corporate learning, academic leadership development, and human capital capability-building.",
-    highlights: [
-      "Designed leadership and faculty development journeys for institutions and people teams",
-      "Guides participants from self-awareness to practical workplace and classroom application",
-      "Known for combining strategic clarity with reflective, people-centered facilitation",
-    ],
-  },
-  {
-    id: 2,
-    name: "Ananya Verma",
-    role: "Communication & Behavioral Skills Trainer",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
-    shortBio:
-      "Ananya works with students and professionals to build confidence, communication clarity, and workplace readiness.",
-    fullBio:
-      "Ananya Verma specializes in helping learners express themselves with more clarity, confidence, and professional polish. Her sessions are interactive, practical, and closely aligned with real-world expectations around interviews, presentations, collaboration, and professional communication.",
-    expertise: ["Communication", "Confidence Building", "Interview Skills"],
-    experience:
-      "10+ years facilitating communication, behavioural readiness, and employability-focused development programs.",
-    highlights: [
-      "Builds practical speaking confidence for students, graduates, and early professionals",
-      "Designs learning experiences around workplace etiquette, presentations, and interviews",
-      "Creates safe, high-engagement environments that improve clarity and self-belief",
-    ],
-  },
-  {
-    id: 3,
-    name: "Rahul Mehta",
-    role: "Leadership & Performance Coach",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
-    shortBio:
-      "Rahul specializes in leadership capability building, team performance, and manager effectiveness programs.",
-    fullBio:
-      "Rahul Mehta works with managers and emerging leaders to strengthen accountability, people leadership, and team effectiveness. He focuses on translating leadership concepts into practical routines, clearer conversations, and stronger decision-making so participants can perform with more consistency and confidence.",
-    expertise: ["Leadership", "Performance Coaching", "Team Effectiveness"],
-    experience:
-      "12+ years delivering manager effectiveness, performance coaching, and leadership readiness interventions.",
-    highlights: [
-      "Supports first-time and emerging leaders as they step into greater responsibility",
-      "Brings a strong execution lens to coaching, feedback, and performance conversations",
-      "Helps teams build clarity, ownership, and stronger collaboration habits",
-    ],
-  },
-];
 
 export const empowerUContent = {
   heroTitle: "A growth initiative for confidence, capability, and career momentum.",
