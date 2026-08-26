@@ -155,11 +155,15 @@ export default function HumanPotentialVisual() {
       </div>
 
       {/* Supporting labels */}
-      <div className="absolute left-0 top-[27%] rounded-full border border-[var(--color-border)] bg-white/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)] shadow-sm backdrop-blur-sm">
+      <div className="absolute left-0 top-[32%] rounded-full border border-[var(--color-border)] bg-white/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)] shadow-sm backdrop-blur-sm">
         Psychology
       </div>
 
-      <div className="absolute right-0 top-[27%] rounded-full border border-[var(--color-border)] bg-white/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)] shadow-sm backdrop-blur-sm">
+      <div className="absolute left-[43%] top-[15%] rounded-full border border-[var(--color-border)] bg-white/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)] shadow-sm backdrop-blur-sm">
+        Skills
+      </div>
+
+      <div className="absolute right-0 top-[32%] rounded-full border border-[var(--color-border)] bg-white/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--color-primary)] shadow-sm backdrop-blur-sm">
         Behaviour
       </div>
 

@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Programs from "./pages/Programs";
 import Services from "./pages/Services";
+import Trainers from "./pages/Trainers";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/programs" element={<Programs />} />
+        <Route path="/trainers" element={<Trainers />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <WhatsAppFloat />

@@ -3,53 +3,140 @@
      Brand Colours
   -------------------------------- */
 
-  --color-primary: #23424e;
-  --color-secondary: #a96a2d;
+  /* Rust / terracotta
+     Primary action + strong accents */
+  --color-primary: #b16b32;
 
-  --color-background: #f7f4ef;
+  /* Deep blue-green
+     Brand identity + typography */
+  --color-secondary: #29444b;
+
+
+  /* --------------------------------
+     Page Colours
+  -------------------------------- */
+
+  /* Main page background */
+  --color-background: #faf8f4;
+
+  /* Cards / content surfaces */
   --color-surface: #ffffff;
 
-  --color-text-primary: #23424e;
-  --color-text-secondary: #5a5a5a;
+  /* Warm alternate surface */
+  --color-surface-warm: #f4eee5;
 
-  --color-border: #ddd6cc;
+  /* Soft blush section */
+  --color-soft-accent: #efd9d3;
 
-  --color-muted: #c9bca8;
-  --color-soft-accent: #e8d5d1;
+
+  /* --------------------------------
+     Typography
+  -------------------------------- */
+
+  --color-text-primary: #29444b;
+
+  /* Warm muted text rather than grey */
+  --color-text-secondary: #69706d;
+
+  --color-text-muted: #02728e;
+
+  --color-text-light: #ffffff;
+
+
+  /* --------------------------------
+     Supporting Brand Colours
+  -------------------------------- */
+
+  --color-rust: #b16b32;
+
+  --color-rust-light: #cf8a51;
+
+  --color-deep-blue: #29444b;
+
+  --color-taupe: #c4b5a2;
+
+  --color-blush: #efd9d3;
+
+  --color-cream: #f4eee5;
+
+
+  /* --------------------------------
+     Borders
+  -------------------------------- */
+
+  --color-border: #e3ddd4;
+
+  --color-border-soft: #eee9e2;
 
 
   /* --------------------------------
      Gradients
   -------------------------------- */
 
+  /* Strong brand section
+     Rust is the dominant colour. */
   --gradient-primary:
-    linear-gradient(135deg, #23424e 0%, #315968 100%);
+    linear-gradient(
+      135deg,
+      #b16b32 0%,
+      #c27b42 100%
+    );
 
+
+  /* Slightly softer rust */
   --gradient-primary-soft:
-    linear-gradient(135deg, #23424e 0%, #3f6470 100%);
+    linear-gradient(
+      135deg,
+      #b16b32 0%,
+      #cf8a51 100%
+    );
 
+
+  /* Warm accent */
   --gradient-warm:
-    linear-gradient(135deg, #a96a2d 0%, #c4874d 100%);
+    linear-gradient(
+      135deg,
+      #b16b32 0%,
+      #d39a6b 100%
+    );
 
+
+  /* Cream → blush */
   --gradient-soft:
-    linear-gradient(135deg, #f7f4ef 0%, #e8d5d1 100%);
+    linear-gradient(
+      135deg,
+      #f4eee5 0%,
+      #efd9d3 100%
+    );
 
+
+  /* White → cream */
   --gradient-surface:
-    linear-gradient(135deg, #ffffff 0%, #f7f4ef 100%);
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f4eee5 100%
+    );
 
+
+  /* Brand gradient
+     Kept deliberately warm.
+     No giant navy gradient anymore. */
   --gradient-brand:
     linear-gradient(
       135deg,
-      #23424e 0%,
-      #315968 55%,
-      #a96a2d 100%
+      #b16b32 0%,
+      #c27b42 60%,
+      #d9a67d 100%
     );
 
+
+  /* Very subtle decorative gradient */
   --gradient-brand-soft:
     linear-gradient(
       135deg,
-      rgba(35, 66, 78, 0.08) 0%,
-      rgba(169, 106, 45, 0.08) 100%
+      rgba(177, 107, 50, 0.07) 0%,
+      rgba(239, 217, 211, 0.12) 100%
     );
 
 
@@ -57,23 +144,28 @@
      Shadows
   -------------------------------- */
 
+  /* Extremely subtle.
+     We don't want floating SaaS cards. */
   --shadow-sm:
-    0 4px 14px rgba(35, 66, 78, 0.05);
+    0 3px 12px rgba(41, 68, 75, 0.035);
 
   --shadow-md:
-    0 12px 30px rgba(35, 66, 78, 0.07);
+    0 8px 24px rgba(41, 68, 75, 0.05);
 
   --shadow-lg:
-    0 18px 45px rgba(35, 66, 78, 0.08);
+    0 14px 35px rgba(41, 68, 75, 0.065);
 
   --shadow-xl:
-    0 24px 60px rgba(35, 66, 78, 0.12);
+    0 20px 50px rgba(41, 68, 75, 0.08);
 
+  /* Used for important warm elements */
   --shadow-warm:
-    0 20px 50px rgba(169, 106, 45, 0.12);
+    0 18px 45px rgba(177, 107, 50, 0.12);
 
+  /* Kept for compatibility.
+     Much softer than before. */
   --shadow-dark:
-    0 20px 55px rgba(35, 66, 78, 0.18);
+    0 18px 45px rgba(41, 68, 75, 0.10);
 
 
   /* --------------------------------
@@ -81,9 +173,13 @@
   -------------------------------- */
 
   --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 28px;
+
+  --radius-md: 14px;
+
+  --radius-lg: 20px;
+
+  --radius-xl: 26px;
+
   --radius-pill: 999px;
 
 
@@ -92,42 +188,55 @@
   -------------------------------- */
 
   --transition-fast: 180ms ease;
+
   --transition-base: 300ms ease;
+
   --transition-slow: 500ms ease;
 
-  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-brand:
+    cubic-bezier(0.22, 1, 0.36, 1);
 
 
   /* --------------------------------
      Decorative Elements
   -------------------------------- */
 
-  --decorative-line-width: 48px;
+  --decorative-line-width: 42px;
+
   --decorative-line-height: 3px;
 
-  --decorative-dot-size: 8px;
+  --decorative-dot-size: 7px;
 
   --decorative-ring-size: 72px;
-  --decorative-ring-border: 1px solid rgba(169, 106, 45, 0.24);
+
+  --decorative-ring-border:
+    1px solid rgba(177, 107, 50, 0.24);
 
 
   /* --------------------------------
      Overlay / Transparency
   -------------------------------- */
 
-  --overlay-light: rgba(255, 255, 255, 0.72);
-  --overlay-dark: rgba(35, 66, 78, 0.82);
+  --overlay-light:
+    rgba(255, 255, 255, 0.78);
 
-  --surface-hover: rgba(35, 66, 78, 0.035);
+  --overlay-dark:
+    rgba(41, 68, 75, 0.72);
 
-  --border-subtle: rgba(35, 66, 78, 0.10);
+  --surface-hover:
+    rgba(177, 107, 50, 0.035);
+
+  --border-subtle:
+    rgba(41, 68, 75, 0.08);
 
 
   /* --------------------------------
      Status
   -------------------------------- */
 
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  --color-success: #66866a;
+
+  --color-warning: #c58b3d;
+
+  --color-error: #c86b63;
 }

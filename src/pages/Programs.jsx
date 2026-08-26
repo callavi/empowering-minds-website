@@ -1,122 +1,144 @@
-import { useMemo, useEffect, useState } from "react";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import ProgramCard from "../components/common/ProgramCard";
 import ProgramModal from "../components/sections/ProgramModal";
 import CTASection from "../components/ui/CTASection";
 import PageHero from "../components/ui/PageHero";
 import SectionHeader from "../components/ui/SectionHeader";
-import { categories } from "../data/siteContent";
-import { getAllPrograms } from "../services/programAPI";
+import { serviceGroups } from "../data/siteContent";
 
 export default function Programs() {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
-  const [selectedProgram, setSelectedProgram] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [programs, setPrograms] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const urlGroupId = searchParams.get("group");
 
-  useEffect(() => {
-    async function fetchPrograms() {
-      try {
-        setLoading(true);
-        setError("");
-        const result = await getAllPrograms();
-        const programsFromApi = Array.isArray(result?.data) ? result.data : result;
-        setPrograms(programsFromApi);
-      } catch {
-        setError("Unable to load programs. Please try again.");
-      } finally {
-        setLoading(false);
-      }
-    }
+  const selectedGroupId =
+    serviceGroups.some((group) => group.id === urlGroupId)
+      ? urlGroupId
+      : serviceGroups[0]?.id || null;
 
-    fetchPrograms();
-  }, []);
+  const [selectedProgram, setSelectedProgram] =
+    useState(null);
 
-  const filteredPrograms = useMemo(() => {
-    return programs.filter((program) => {
-      const matchesCategory =
-        category === "All" || program.category === category;
-      const query = search.trim().toLowerCase();
+  const selectedGroup = serviceGroups.find(
+    (group) => group.id === selectedGroupId
+  );
 
-      const title = program.title || "";
-      const description = program.description || "";
-      const audience = program.audience || "";
-
-      const matchesSearch =
-        !query ||
-        title.toLowerCase().includes(query) ||
-        description.toLowerCase().includes(query) ||
-        audience.toLowerCase().includes(query);
-
-      return matchesCategory && matchesSearch;
-    });
-  }, [programs, category, search]);
+  const handleGroupChange = (groupId) => {
+    setSearchParams(
+      { group: groupId },
+      { replace: true }
+    );
+  };
 
   return (
     <main>
+      {/* Hero */}
       <PageHero
-        // eyebrow="Programs"
-        title="A professional catalogue of transformational learning journeys"
-        description="Search by need, filter by category, and explore program details built for institutions, teams, and learners."
+        eyebrow="Programs"
+        title="Learning journeys designed around real needs"
+        description="Explore our areas of development across educational institutions, corporate organisations, individual growth, and trainer development."
+        primaryCta={{
+          label: "Find Your Program",
+          to: "#programs",
+        }}
+        secondaryCta={{
+          label: "Talk to Us",
+          to: "/contact"
+        }}
       />
 
-      <section className="py-16 sm:py-20 lg:py-24">
+      {/* Programs */}
+      <section className="py-16 sm:py-20 lg:py-24" id="programs">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            eyebrow="Catalogue"
-            title="Find the right program for your audience"
-            description="Use the search and filters below to discover flagship offerings and specialist interventions."
+            eyebrow="Explore our offerings"
+            title="Choose an area of development"
+            description="Select a service group to explore the learning and development areas available for your needs."
           />
 
-          <div className="mt-5 grid gap-4 rounded-[10px] border border-[var(--color-border)] bg-white p-4 shadow-sm md:grid-cols-[1fr_auto] md:p-5">
-            <input
-              type="search"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search programs, audience, or outcomes"
-              className="w-full rounded-[10px] border border-[var(--color-border)] px-4 py-3 outline-none transition focus:border-[var(--color-secondary)] sm:px-5"
-            />
-            <select
-              value={category}
-              onChange={(event) => setCategory(event.target.value)}
-              className="w-full rounded-[10px] border border-[var(--color-border)] px-4 py-3 outline-none transition focus:border-[var(--color-secondary)] sm:px-5"
+          {/* Service group selector */}
+          <div className="mt-8 overflow-x-auto pb-2">
+            <div
+              className="flex min-w-max gap-2 rounded-full border border-[var(--color-border)] bg-white p-1.5 shadow-sm"
+              role="tablist"
+              aria-label="Service groups"
             >
-              {categories.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
+              {serviceGroups.map((group) => {
+                const isSelected =
+                  group.id === selectedGroupId;
+
+                return (
+                  <button
+                    key={group.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isSelected}
+                    onClick={() =>
+                      handleGroupChange(group.id)
+                    }
+                    className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                      isSelected
+                        ? "bg-[var(--color-primary)] text-white shadow-sm"
+                        : "text-[var(--color-primary)] hover:bg-[var(--color-soft-accent)]"
+                    }`}
+                  >
+                    {group.title}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {loading ? (
-              <p className="col-span-full">Loading programs...</p>
-            ) : error ? (
-              <p className="col-span-full">{error}</p>
-            ) : filteredPrograms.length === 0 ? (
-              <p className="col-span-full">No programs available.</p>
-            ) : (
-              filteredPrograms.map((program, index) => (
-                <ProgramCard
-                  key={program._id || program.id || index}
-                  program={program}
-                  onView={setSelectedProgram}
-                  delay={index * 0.05}
-                />
-              ))
-            )}
-          </div>
+          {/* Selected service group */}
+          {selectedGroup && (
+            <div className="mt-12">
+              <div className="max-w-3xl">
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--color-secondary)]">
+                  {selectedGroup.eyebrow}
+                </p>
+
+                <h2 className="mt-3 text-2xl font-black tracking-tight text-[var(--color-primary)] sm:text-3xl">
+                  {selectedGroup.title}
+                </h2>
+
+                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+                  {selectedGroup.description}
+                </p>
+              </div>
+
+              {/* Service cards */}
+              <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                {selectedGroup.areas.map(
+                  (program, index) => (
+                    <ProgramCard
+                      key={program.id}
+                      program={{
+                        ...program,
+                        serviceGroup:
+                          selectedGroup.id,
+                      }}
+                      onView={setSelectedProgram}
+                      delay={index * 0.05}
+                    />
+                  )
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
+      {/* CTA */}
       <CTASection
-        title="Want help selecting the right learning path?"
-        description="We can recommend the best-fit program or shape a tailored cohort based on your goals and audience."
+        title="Not sure where to begin?"
+        description="Tell us what you are trying to achieve and we can help you identify the most relevant area of development for your organisation, team, or professional journey."
+        secondaryLabel="Learn More"
+        secondaryTo="/services"
       />
 
+      {/* Program details / callback */}
       <ProgramModal
         program={selectedProgram}
         onClose={() => setSelectedProgram(null)}

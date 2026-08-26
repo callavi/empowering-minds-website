@@ -6,6 +6,7 @@ import PageHero from "../components/ui/PageHero";
 import SectionHeader from "../components/ui/SectionHeader";
 import FeatureCard from "../components/ui/FeatureCard";
 import HumanPotentialVisual from "../components/ui/HumanPotentialVisual"
+import TrainerPreview from "../components/sections/TrainerPreview";
 
 const foundations = [
   {
@@ -77,16 +78,16 @@ export default function About() {
         </div>
       </section>
       {/* Our Foundations */}
-      <section className="relative overflow-hidden bg-[var(--color-primary)] py-20 sm:py-24 lg:py-28">
+      <section className="relative overflow-hidden bg-[var(--color-taupe)] py-20 sm:py-24 lg:py-28">
         {/* Ambient decoration */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-[var(--color-secondary)]/10 blur-3xl"
+          className="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-[var(--color-primary)]/40 blur-3xl"
         />
 
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-white/5 blur-3xl"
+          className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-[var(--color-primary)]/40 blur-3xl"
         />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -102,7 +103,7 @@ export default function About() {
                   The disciplines behind how we develop people.
                 </h2>
 
-                <p className="mt-5 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">
+                <p className="mt-5 max-w-2xl text-base leading-8 text-white/85 sm:text-lg">
                   Our work brings together complementary disciplines and
                   frameworks to create structured interventions for
                   meaningful human and organisational development.
@@ -116,7 +117,7 @@ export default function About() {
                     icon={item.icon}
                     title={item.title}
                     description={item.description}
-                    variant="dark"
+                    variant="featured"
                     delay={index * 0.06}
                     className={
                       index === foundations.length - 1
@@ -135,7 +136,7 @@ export default function About() {
             >
               <div
                 aria-hidden="true"
-                className="absolute h-72 w-72 rounded-full bg-[var(--color-secondary)]/10 blur-3xl sm:h-96 sm:w-96"
+                className="absolute h-72 w-72 rounded-full bg-[var(--color-cream)]/30 blur-3xl sm:h-96 sm:w-96"
               />
 
               <div className="relative w-full max-w-[520px]">
@@ -205,11 +206,11 @@ export default function About() {
 
               {/* Founder message */}
               <div className="p-7 sm:p-10 lg:p-14">
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-secondary)]">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-primary)]">
                   {aboutContent.founderTitle}
                 </p>
 
-                <h2 className="mt-5 text-3xl font-black tracking-tight text-[var(--color-primary)] sm:text-4xl">
+                <h2 className="mt-5 text-3xl font-black tracking-tight text-[var(--color-secondary)] sm:text-4xl">
                   {aboutContent.founderName}
                 </h2>
 
@@ -217,7 +218,7 @@ export default function About() {
                   {aboutContent.founderRole}
                 </p>
 
-                <div className="mt-8 space-y-5 text-base leading-8 text-[var(--color-primary)]/75 sm:text-lg">
+                <div className="mt-8 space-y-5 text-base leading-8 text-[var(--color-secondary)]/75 sm:text-lg">
                   <p>{aboutContent.founderNote}</p>
 
                   <p>{aboutContent.founderNoteContinued}</p>
@@ -236,19 +237,12 @@ export default function About() {
         </div>
       </section>
 
+      <TrainerPreview />
+
       {/* Why Empowering Minds */}
-      <section className="bg-[var(--color-background)] py-16 sm:py-20 lg:py-28">
+      <section className="[background-image:var(--gradient-surface)] py-16 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeIn
-            className="
-              overflow-hidden rounded-[36px]
-              [background-image:var(--gradient-primary-soft)]
-              px-6 py-10
-              shadow-[var(--shadow-xl)]
-              sm:px-10 sm:py-14
-              lg:px-16 lg:py-16
-            "
-          >
+          <FadeIn>
             <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
               {/* Intro */}
               <div className="lg:sticky lg:top-24 lg:self-start">
@@ -256,11 +250,11 @@ export default function About() {
                   Our Difference
                 </p>
 
-                <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
+                <h2 className="mt-4 text-3xl font-black tracking-tight text-[var(--color-taupe)] sm:text-4xl lg:text-5xl">
                   {aboutContent.whyTitle}
                 </h2>
 
-                <p className="mt-6 max-w-md text-base leading-8 text-white/70 sm:text-lg">
+                <p className="mt-6 max-w-md text-base leading-8 text-[var(--color-text-secondary)]/70 sm:text-lg">
                   Our approach combines psychological foundations,
                   structured development, and measurable performance
                   to create lasting human capital impact.
@@ -289,16 +283,16 @@ export default function About() {
                       <div>
                         <h3
                           className="
-                            text-xl font-bold tracking-tight text-white
+                            text-xl font-bold tracking-tight text-[var(--color-text-muted)]
                             transition-colors duration-[var(--transition-base)]
-                            group-hover:text-[var(--color-soft-accent)]
+                            group-hover:text-[var(--color-rust-light)]
                             sm:text-2xl
                           "
                         >
                           {point.title}
                         </h3>
 
-                        <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
+                        <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-text-primary)]/65 sm:text-base">
                           {point.description}
                         </p>
                       </div>
@@ -314,7 +308,7 @@ export default function About() {
       <CTASection
         title="Let's build stronger human capital together."
         description="Talk to us about training, consulting, transformation, or placement initiatives for your institution or organisation."
-        variant="soft"
+        variant="warm"
       />
     </main>
   );

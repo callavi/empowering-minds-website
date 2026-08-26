@@ -39,7 +39,15 @@ export default function Services() {
       <PageHero
         eyebrow="Our Services"
         title="Human capital development built around real outcomes"
-        description="We design structured development interventions for educational institutions and corporate organisations, combining behavioural, emotional, and performance-focused capabilities."
+        description="We design structured development interventions for institutions, organisations, individuals, and trainers — combining behavioural, emotional, and performance-focused capabilities."
+        primaryCta={{
+          label: "Explore Our Programs",
+          to: "/programs",
+        }}
+        secondaryCta={{
+          label: "Talk to Our Team",
+          to: "/contact",
+        }}
       />
       {/* Core Development Areas */}
       <section className="py-16 sm:py-20 lg:py-24">
@@ -246,8 +254,13 @@ export default function Services() {
       </section>
 
       <CTASection
-        title="Looking for a development intervention?"
-        description="Tell us about your institution, organisation, or development goals and we can explore the right approach together."
+        title="Tell us what you want to develop."
+        description="Whether you're developing people, strengthening an organisation, growing personally, or preparing to train others, we can explore the right approach together."
+        variant="blush"
+        primaryLabel="Discuss Your Development Goals"
+        primaryTo="/contact"
+        secondaryLabel="View Our Programs"
+        secondaryTo="/programs"
       />
     </main>
   );

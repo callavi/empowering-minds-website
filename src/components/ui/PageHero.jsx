@@ -5,101 +5,311 @@ export default function PageHero({
   eyebrow,
   title,
   description,
-  primaryCta = { label: "Talk to us", to: "/contact" },
-  secondaryCta = { label: "Explore programs", to: "/programs" },
+
+  primaryCta = {
+    label: "Talk to us",
+    to: "/contact",
+  },
+
+  secondaryCta = {
+    label: "Explore programs",
+    to: "/programs",
+  },
+
+  /**
+   * Optional visual to place on the right side of the hero.
+   * Useful for illustrations, diagrams, or page-specific visuals.
+   */
+  visual = null,
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-[var(--color-primary)] pt-28 text-white sm:pt-32">
-      {/* Background atmosphere */}
+    <section
+      className="
+        relative isolate overflow-hidden
+        bg-[var(--color-background)]
+        pt-24
+        sm:pt-28
+        lg:pt-32
+      "
+    >
+      {/* --------------------------------
+          Decorative atmosphere
+      -------------------------------- */}
+
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 [background-image:var(--gradient-primary)]"
+        className="
+          pointer-events-none absolute
+          -right-24 -top-24
+          h-72 w-72
+          rounded-full
+          border
+          border-[var(--color-primary)]/10
+        "
       />
 
       <div
         aria-hidden="true"
         className="
           pointer-events-none absolute
-          -right-32 -top-32
-          h-[420px] w-[420px]
+          -right-12 top-12
+          h-40 w-40
           rounded-full
-          border border-white/10
-          bg-[var(--color-secondary)]/10
+          border
+          border-[var(--color-primary)]/10
+        "
+      />
+
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none absolute
+          -bottom-24 -left-20
+          h-64 w-64
+          rounded-full
+          bg-[var(--color-soft-accent)]/30
           blur-3xl
         "
       />
 
+      {/* --------------------------------
+          Hero content
+      -------------------------------- */}
+
       <div
-        aria-hidden="true"
         className="
-          pointer-events-none absolute
-          -bottom-40 -left-20
-          h-[360px] w-[360px]
-          rounded-full
-          bg-[var(--color-soft-accent)]/10
-          blur-3xl
+          relative mx-auto max-w-7xl
+          px-4
+          py-16
+          sm:px-6 sm:py-20
+          lg:px-8 lg:py-24
         "
-      />
+      >
+        <div
+          className="
+            grid items-center gap-12
+            lg:grid-cols-[1.05fr_0.95fr]
+            lg:gap-16
+          "
+        >
+          {/* --------------------------------
+              Content
+          -------------------------------- */}
 
-      {/* Decorative ring */}
-      <div
-        aria-hidden="true"
-        className="
-          pointer-events-none absolute
-          right-[8%] top-[22%]
-          hidden h-32 w-32
-          rounded-full
-          border border-[var(--color-secondary)]/30
-          sm:block
-        "
-      />
+          <FadeIn className="max-w-3xl">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3">
+              <span
+                aria-hidden="true"
+                className="
+                  h-[var(--decorative-line-height)]
+                  w-[var(--decorative-line-width)]
+                  rounded-full
+                  bg-[var(--color-primary)]
+                "
+              />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-        <FadeIn className="max-w-4xl">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3">
-            <span
-              aria-hidden="true"
-              className="h-[var(--decorative-line-height)] w-[var(--decorative-line-width)] rounded-full bg-[var(--color-secondary)]"
-            />
+              <p
+                className="
+                  text-xs font-semibold uppercase
+                  tracking-[0.24em]
+                  text-[var(--color-secondary)]
+                  sm:text-sm sm:tracking-[0.3em]
+                "
+              >
+                {eyebrow}
+              </p>
+            </div>
 
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-soft-accent)] sm:text-sm sm:tracking-[0.32em]">
-              {eyebrow}
+            {/* Heading */}
+            <h1
+              className="
+                mt-6
+                max-w-3xl
+                text-4xl font-bold
+                leading-[1.04]
+                tracking-[-0.035em]
+                text-[var(--color-secondary)]
+                sm:text-5xl
+                lg:text-6xl
+                xl:text-7xl
+              "
+            >
+              {title}
+            </h1>
+
+            {/* Description */}
+            <p
+              className="
+                mt-6
+                max-w-2xl
+                text-sm leading-7
+                text-[var(--color-text-secondary)]
+                sm:text-base sm:leading-8
+                lg:text-lg
+              "
+            >
+              {description}
             </p>
-          </div>
 
-          {/* Heading */}
-          <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[1.05] tracking-[-0.03em] sm:text-6xl lg:text-7xl">
-            {title}
-          </h1>
+            {/* Actions */}
+            {(primaryCta || secondaryCta) && (
+              <div
+                className="
+                  mt-8
+                  flex flex-col gap-3
+                  sm:mt-9
+                  sm:flex-row sm:flex-wrap sm:gap-4
+                "
+              >
+                {primaryCta && (
+                  <CTAButton
+                    as={primaryCta.as}
+                    to={primaryCta.to}
+                    href={primaryCta.href}
+                    target={primaryCta.target}
+                    rel={primaryCta.rel}
+                    variant="primary"
+                  >
+                    {primaryCta.label}
+                  </CTAButton>
+                )}
 
-          {/* Description */}
-          <p className="mt-7 max-w-2xl text-sm leading-7 text-white/70 sm:text-base sm:leading-8 lg:text-lg">
-            {description}
-          </p>
+                {secondaryCta && (
+                  <CTAButton
+                    as={secondaryCta.as}
+                    to={secondaryCta.to}
+                    href={secondaryCta.href}
+                    target={secondaryCta.target}
+                    rel={secondaryCta.rel}
+                    variant="secondary"
+                  >
+                    {secondaryCta.label}
+                  </CTAButton>
+                )}
+              </div>
+            )}
+          </FadeIn>
 
-          {/* Actions */}
-          <div className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
-            <CTAButton to={primaryCta.to} variant="primary">
-              {primaryCta.label}
-            </CTAButton>
+          {/* --------------------------------
+              Visual
+          -------------------------------- */}
 
-            <CTAButton to={secondaryCta.to} variant="ghost">
-              {secondaryCta.label}
-            </CTAButton>
-          </div>
-        </FadeIn>
+          <FadeIn
+            delay={0.12}
+            className="
+              relative
+              hidden
+              min-h-[280px]
+              items-center
+              justify-center
+              lg:flex
+            "
+          >
+            {visual ? (
+              visual
+            ) : (
+              <div
+                aria-hidden="true"
+                className="
+                  relative
+                  flex h-64 w-64
+                  items-center justify-center
+                "
+              >
+                {/* Outer ring */}
+                <div
+                  className="
+                    absolute inset-0
+                    rounded-full
+                    border
+                    border-[var(--color-primary)]/15
+                  "
+                />
 
-        {/* Bottom accent */}
+                {/* Middle ring */}
+                <div
+                  className="
+                    absolute inset-8
+                    rounded-full
+                    border
+                    border-[var(--color-primary)]/20
+                  "
+                />
+
+                {/* Core */}
+                <div
+                  className="
+                    flex h-24 w-24
+                    items-center justify-center
+                    rounded-full
+                    bg-[var(--color-primary)]
+                    shadow-[var(--shadow-warm)]
+                  "
+                >
+                  <span
+                    className="
+                      h-3 w-3
+                      rounded-full
+                      bg-white
+                    "
+                  />
+                </div>
+
+                {/* Orbit points */}
+                <span
+                  className="
+                    absolute left-6 top-1/2
+                    h-2 w-2
+                    -translate-y-1/2
+                    rounded-full
+                    bg-[var(--color-primary)]
+                  "
+                />
+
+                <span
+                  className="
+                    absolute right-6 top-1/2
+                    h-2 w-2
+                    -translate-y-1/2
+                    rounded-full
+                    bg-[var(--color-primary)]
+                  "
+                />
+
+                <span
+                  className="
+                    absolute left-1/2 top-5
+                    h-2 w-2
+                    -translate-x-1/2
+                    rounded-full
+                    bg-[var(--color-secondary)]
+                  "
+                />
+
+                <span
+                  className="
+                    absolute bottom-5 left-1/2
+                    h-2 w-2
+                    -translate-x-1/2
+                    rounded-full
+                    bg-[var(--color-secondary)]
+                  "
+                />
+              </div>
+            )}
+          </FadeIn>
+        </div>
+
+        {/* Bottom transition */}
         <div
           aria-hidden="true"
           className="
-            mt-16 h-px w-full
-            bg-gradient-to-r
-            from-white/15
-            via-white/5
-            to-transparent
-            sm:mt-20
+            mt-14
+            h-px
+            w-full
+            bg-[var(--color-border)]
+            sm:mt-18
           "
         />
       </div>

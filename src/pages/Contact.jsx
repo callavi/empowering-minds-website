@@ -1,13 +1,17 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { useState } from "react";
-import { contactDetails, faqs } from "../data/siteContent";
+import { useMemo, useState } from "react";
+import { supabase } from "../lib/supabase";
+import { serviceGroups, contactDetails, faqs } from "../data/siteContent";
 import CTASection from "../components/ui/CTASection";
 import FadeIn from "../components/ui/FadeIn";
 import PageHero from "../components/ui/PageHero";
 import SectionHeader from "../components/ui/SectionHeader";
-import { submitContactForm } from "../services/contactAPI";
 
 export default function Contact() {
+  const [serviceGroupId, setServiceGroupId] = useState("");
+  const [serviceId, setServiceId] = useState("");
+  const [intent, setIntent] = useState("");
+
   const [name, setName] = useState("");
   const [organization, setOrganization] = useState("");
   const [email, setEmail] = useState("");
@@ -18,44 +22,129 @@ export default function Contact() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  const selectedGroup = useMemo(
+    () => serviceGroups.find((group) => group.id === serviceGroupId),
+    [serviceGroupId]
+  );
 
-    setLoading(true);
+  const availableServices = selectedGroup?.areas ?? [];
+
+  const selectedService = useMemo(
+    () =>
+      availableServices.find((service) => service.id === serviceId),
+    [availableServices, serviceId]
+  );
+
+  const handleServiceGroupChange = (event) => {
+  const value = event.target.value;
+
+  setServiceGroupId(value);
+  setServiceId("");
+  setSuccess("");
+  setError("");
+};
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     setSuccess("");
     setError("");
 
+    if (!serviceGroupId) {
+      setError("Please select a service group.");
+      return;
+    }
+
+    if (!serviceId) {
+      setError("Please select a program.");
+      return;
+    }
+
+    if (!intent) {
+      setError("Please tell us how you'd like to proceed.");
+      return;
+    }
+
+    setLoading(true);
+
+    const leadData = {
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      organization: organization.trim(),
+      message: message.trim(),
+      serviceGroup: selectedGroup?.title ?? "",
+      serviceId,
+      serviceTitle: selectedService?.title ?? "",
+      intent,
+    };
+
     try {
-      await submitContactForm({ name, organization, email, phone, message });
-      setSuccess("Enquiry submitted successfully.");
+      const { data, error: submitError } =
+        await supabase.functions.invoke("submit-callback", {
+          body: leadData,
+        });
+
+      if (submitError) {
+        console.error("Contact submission error:", submitError);
+        throw new Error(
+          "We couldn't submit your request. Please try again."
+        );
+      }
+
+      if (!data?.success) {
+        throw new Error(
+          data?.error ||
+            "We couldn't submit your request. Please try again."
+        );
+      }
+
+      setSuccess(
+        intent === "demo"
+          ? "Your demo request has been received. We'll be in touch shortly."
+          : "Your callback request has been received. We'll be in touch shortly."
+      );
+
+      // Reset form after successful submission
       setName("");
       setOrganization("");
       setEmail("");
       setPhone("");
       setMessage("");
-    } catch (err) {
-      setError(err?.message || "Failed to submit Enquiry.");
+      setServiceGroupId("");
+      setServiceId("");
+      setIntent("");
+    } catch (error) {
+      console.error(error);
+
+      setError(
+        error.message ||
+          "Something went wrong. Please try again."
+      );
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <main>
       <PageHero
         eyebrow="Contact"
-        title="Let's talk about what you need."
-        description="Whether you're an educational institution, corporate organisation, or looking for a development initiative, tell us what you're trying to achieve."
+        title="Let's find the right next step."
+        description="Tell us what you're looking for and we'll help you explore the right program, book a 30-minute demo, or request a callback."
         secondaryCta={{ label: "Explore services", to: "/services" }}
+        primaryCta={{ label: "Get Started", to: "#form" }}
       />
 
+      {/* Contact details */}
       <section className="py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Get in Touch"
             title="We're here to help you take the next step."
-            description="Whether you're an educational institution, corporate organisation, or looking for a development initiative, tell us what you need."
+            description="Whether you're an educational institution, corporate organisation, trainer, or individual, tell us what you're looking for."
           />
+
           <div className="mt-12 rounded-[36px] bg-[var(--color-primary)] px-8 py-10 text-white sm:px-10 lg:px-12">
             <div className="grid gap-8 sm:grid-cols-3 sm:divide-x sm:divide-white/15 sm:gap-0">
               {/* Phone */}
@@ -69,13 +158,13 @@ export default function Contact() {
                 </p>
 
                 <div className="mt-3 space-y-1">
-                  {contactDetails.phones.map((phone) => (
+                  {contactDetails.phones.map((phoneNumber) => (
                     <a
-                      key={phone}
-                      href={`tel:${phone.replace(/\s/g, "")}`}
+                      key={phoneNumber}
+                      href={`tel:${phoneNumber.replace(/\s/g, "")}`}
                       className="block text-base font-semibold text-white transition hover:text-white/80"
                     >
-                      {phone}
+                      {phoneNumber}
                     </a>
                   ))}
                 </div>
@@ -119,128 +208,368 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      <section className="bg-[var(--color-background)] py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            {/* Form */}
-            <FadeIn>
-              <SectionHeader
-                eyebrow="Send an Enquiry"
-                title="Tell us your goal"
-                description="Share a few details about your requirements and we'll get back to you."
-              />
-              <div className="mt-8 rounded-[32px] bg-white p-6 shadow-sm sm:p-8">
-                <form onSubmit={handleSubmit}>
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <input
-                      name="name"
-                      type="text"
-                      autoComplete="name"
+
+      {/* Conversion form */}
+      <section
+        className="bg-[var(--color-background)] py-16 sm:py-20 lg:py-24"
+        id="form"
+      >
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <SectionHeader
+              eyebrow="Get Started"
+              title="Let's find the right fit."
+              description="Choose the area you're interested in and tell us how you'd like to take the next step."
+            />
+
+            <div className="mt-10 rounded-[32px] bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+              <form onSubmit={handleSubmit}>
+                {/* Service selection */}
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--color-secondary)]">
+                    01 — Your area of interest
+                  </p>
+
+                  <h3 className="mt-3 text-xl font-bold text-[var(--color-primary)]">
+                    What are you interested in?
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-6 text-slate-500">
+                    Choose the area that best describes what you're looking
+                    for.
+                  </p>
+                </div>
+
+                <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                  {/* Service group */}
+                  <div>
+                    <label
+                      htmlFor="service-group"
+                      className="mb-2 block text-sm font-semibold text-[var(--color-primary)]"
+                    >
+                      Service group{" "}
+                      <span className="text-[var(--color-secondary)]">*</span>
+                    </label>
+
+                    <select
+                      id="service-group"
+                      name="serviceGroup"
                       required
-                      className="rounded-2xl border border-[var(--color-border)] px-4 py-3"
-                      placeholder="Your name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      value={serviceGroupId}
+                      onChange={handleServiceGroupChange}
                       disabled={loading}
-                    />
-                    <input
-                      name="organization"
-                      type="text"
-                      autoComplete="organization"
-                      className="rounded-2xl border border-[var(--color-border)] px-4 py-3"
-                      placeholder="Organization"
-                      value={organization}
-                      onChange={(e) => setOrganization(e.target.value)}
-                      disabled={loading}
-                    />
-                    <input
-                      name="email"
-                      type="email"
-                      autoComplete="email"
+                      className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm text-[var(--color-primary)] outline-none transition focus:border-[var(--color-secondary)] disabled:bg-slate-50"
+                    >
+                      <option value="">Select a service group</option>
+
+                      {serviceGroups.map((group) => (
+                        <option key={group.id} value={group.id}>
+                          {group.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Service */}
+                  <div>
+                    <label
+                      htmlFor="service"
+                      className="mb-2 block text-sm font-semibold text-[var(--color-primary)]"
+                    >
+                      Program{" "}
+                      <span className="text-[var(--color-secondary)]">*</span>
+                    </label>
+
+                    <select
+                      id="service"
+                      name="service"
                       required
-                      className="rounded-2xl border border-[var(--color-border)] px-4 py-3"
-                      placeholder="Email address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={serviceId}
+                      onChange={(event) => {
+                        setServiceId(event.target.value);
+                        setSuccess("");
+                        setError("");
+                      }}
+                      disabled={!serviceGroupId || loading}
+                      className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm text-[var(--color-primary)] outline-none transition focus:border-[var(--color-secondary)] disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+                    >
+                      <option value="">
+                        {serviceGroupId
+                          ? "Select a program"
+                          : "Select a service group first"}
+                      </option>
+
+                      {availableServices.map((service) => (
+                        <option key={service.id} value={service.id}>
+                          {service.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Intent */}
+                <div className="mt-10 border-t border-[var(--color-border)] pt-10">
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--color-secondary)]">
+                    02 — Your next step
+                  </p>
+
+                  <h3 className="mt-3 text-xl font-bold text-[var(--color-primary)]">
+                    How would you like to proceed?
+                  </h3>
+
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    <button
+                      type="button"
                       disabled={loading}
-                    />
-                    <input
-                      name="phone"
-                      type="tel"
-                      autoComplete="tel"
-                      required
-                      className="rounded-2xl border border-[var(--color-border)] px-4 py-3"
-                      placeholder="Phone number"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onClick={() => {
+                        setIntent("demo");
+                        setSuccess("");
+                        setError("");
+                      }}
+                      className={`rounded-2xl border px-5 py-5 text-left transition ${
+                        intent === "demo"
+                          ? "border-[var(--color-secondary)] bg-[var(--color-soft-accent)]"
+                          : "border-[var(--color-border)] bg-white hover:border-[var(--color-secondary)]/50"
+                      }`}
+                    >
+                      <span className="block text-base font-bold text-[var(--color-primary)]">
+                        Book a 30-minute Demo
+                      </span>
+
+                      <span className="mt-2 block text-sm leading-6 text-slate-500">
+                        Explore the program and discuss whether it's the right
+                        fit for your needs.
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
                       disabled={loading}
+                      onClick={() => {
+                        setIntent("callback");
+                        setSuccess("");
+                        setError("");
+                      }}
+                      className={`rounded-2xl border px-5 py-5 text-left transition ${
+                        intent === "callback"
+                          ? "border-[var(--color-secondary)] bg-[var(--color-soft-accent)]"
+                          : "border-[var(--color-border)] bg-white hover:border-[var(--color-secondary)]/50"
+                      }`}
+                    >
+                      <span className="block text-base font-bold text-[var(--color-primary)]">
+                        Request a Callback
+                      </span>
+
+                      <span className="mt-2 block text-sm leading-6 text-slate-500">
+                        Leave your details and our team will get in touch to
+                        understand your requirements.
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Contact details */}
+                <div className="mt-10 border-t border-[var(--color-border)] pt-10">
+                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--color-secondary)]">
+                    03 — Your details
+                  </p>
+
+                  <h3 className="mt-3 text-xl font-bold text-[var(--color-primary)]">
+                    Tell us how we can reach you.
+                  </h3>
+
+                  <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                    {/* Name */}
+                    <div>
+                      <label
+                        htmlFor="contact-name"
+                        className="mb-2 block text-sm font-semibold text-[var(--color-primary)]"
+                      >
+                        Name{" "}
+                        <span className="text-[var(--color-secondary)]">*</span>
+                      </label>
+
+                      <input
+                        id="contact-name"
+                        name="name"
+                        type="text"
+                        autoComplete="name"
+                        required
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
+                        disabled={loading}
+                        className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm outline-none transition focus:border-[var(--color-secondary)] disabled:bg-slate-50"
+                        placeholder="Your name"
+                      />
+                    </div>
+
+                    {/* Organisation */}
+                    <div>
+                      <label
+                        htmlFor="contact-organization"
+                        className="mb-2 block text-sm font-semibold text-[var(--color-primary)]"
+                      >
+                        Organisation / Institution
+                      </label>
+
+                      <input
+                        id="contact-organization"
+                        name="organization"
+                        type="text"
+                        autoComplete="organization"
+                        value={organization}
+                        onChange={(event) =>
+                          setOrganization(event.target.value)
+                        }
+                        disabled={loading}
+                        className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm outline-none transition focus:border-[var(--color-secondary)] disabled:bg-slate-50"
+                        placeholder="Optional"
+                      />
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label
+                        htmlFor="contact-email"
+                        className="mb-2 block text-sm font-semibold text-[var(--color-primary)]"
+                      >
+                        Email{" "}
+                        <span className="text-[var(--color-secondary)]">*</span>
+                      </label>
+
+                      <input
+                        id="contact-email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        disabled={loading}
+                        className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm outline-none transition focus:border-[var(--color-secondary)] disabled:bg-slate-50"
+                        placeholder="you@example.com"
+                      />
+                    </div>
+
+                    {/* Phone */}
+                    <div>
+                      <label
+                        htmlFor="contact-phone"
+                        className="mb-2 block text-sm font-semibold text-[var(--color-primary)]"
+                      >
+                        Phone{" "}
+                        <span className="text-[var(--color-secondary)]">*</span>
+                      </label>
+
+                      <input
+                        id="contact-phone"
+                        name="phone"
+                        type="tel"
+                        autoComplete="tel"
+                        required
+                        value={phone}
+                        onChange={(event) => setPhone(event.target.value)}
+                        disabled={loading}
+                        className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm outline-none transition focus:border-[var(--color-secondary)] disabled:bg-slate-50"
+                        placeholder="Your phone number"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div className="mt-5">
+                    <label
+                      htmlFor="contact-message"
+                      className="mb-2 block text-sm font-semibold text-[var(--color-primary)]"
+                    >
+                      Anything you'd like us to know?
+                    </label>
+
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={5}
+                      value={message}
+                      onChange={(event) => setMessage(event.target.value)}
+                      disabled={loading}
+                      className="w-full resize-none rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-sm leading-6 outline-none transition focus:border-[var(--color-secondary)] disabled:bg-slate-50"
+                      placeholder="Tell us a little about your requirements..."
                     />
                   </div>
-                    <textarea
-                      name="message"
-                      required
-                      className="mt-4 min-h-80 w-full rounded-2xl border border-[var(--color-border)] px-4 py-3"
-                      placeholder="How can we help?"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      disabled={loading}
-                    />
+                </div>
 
-                  {success ? (
-                    <p className="mt-4 text-sm font-semibold text-green-600">
-                      {success}
+                {/* Selected service summary */}
+                {selectedService && (
+                  <div className="mt-8 rounded-2xl bg-[var(--color-background)] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                      Your selection
                     </p>
-                  ) : null}
 
-                  {error ? (
-                    <p className="mt-4 text-sm font-semibold text-red-600">
-                      {error}
+                    <p className="mt-2 font-bold text-[var(--color-primary)]">
+                      {selectedService.title}
                     </p>
-                  ) : null}
 
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="mt-5 w-full rounded-full bg-[var(--color-secondary)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60 sm:w-auto"
-                  >
-                    {loading ? "Sending..." : "Send Enquiry"}
-                  </button>
-                </form>
-              </div>
-            </FadeIn>
-            {/* MAP */}
-            <FadeIn delay={0.08}>
-              <SectionHeader
-                eyebrow="Our Location"
-                title="Come find us"
-                description="We're based in South Dumdum, Kolkata."
-              />
+                    <p className="mt-1 text-sm text-slate-500">
+                      {selectedGroup?.title}
+                    </p>
 
-              <div className="mt-8 h-[420px] overflow-hidden rounded-[32px] bg-slate-200">
-                <iframe
-                  title="Empowering Minds Location"
-                  src="YOUR_ACTUAL_GOOGLE_MAPS_EMBED_URL"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full"
-                />
-              </div>
-            </FadeIn>
-          </div>
+                    {intent && (
+                      <p className="mt-3 text-sm font-semibold text-[var(--color-secondary)]">
+                        {intent === "demo"
+                          ? "30-minute Demo"
+                          : "Callback Request"}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Messages */}
+                {success && (
+                  <div className="mt-6 rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold leading-6 text-green-700">
+                    {success}
+                  </div>
+                )}
+
+                {error && (
+                  <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold leading-6 text-red-700">
+                    {error}
+                  </div>
+                )}
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="mt-7 flex w-full items-center justify-center rounded-full bg-[var(--color-secondary)] px-6 py-3.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {loading
+                    ? "Processing..."
+                    : intent === "demo"
+                      ? "Continue to Demo Booking"
+                      : intent === "callback"
+                        ? "Request a Callback"
+                        : "Continue"}
+                </button>
+
+                <p className="mt-4 text-center text-xs leading-5 text-slate-500">
+                  We'll use these details only to respond to your request.
+                </p>
+              </form>
+            </div>
+          </FadeIn>
         </div>
       </section>
-      <section className="bg-[var(--color-primary)] py-20 text-white sm:py-24 lg:py-28">
+
+      {/* FAQs */}
+      <section className="bg-[var(--color-cream)] py-20 text-white sm:py-24 lg:py-28">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <p className="text-sm font-bold uppercase tracking-[0.28em] text-white/60">
+            <p className="text-sm font-bold uppercase tracking-[0.28em] text-[var(--color-primary)]/80">
               FAQs
             </p>
 
-            <h2 className="mt-4 max-w-2xl text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 max-w-2xl text-3xl font-black tracking-tight text-[var(--color-text-primary)] sm:text-4xl lg:text-5xl">
               Common questions
             </h2>
           </FadeIn>
@@ -252,16 +581,16 @@ export default function Contact() {
                 delay={index * 0.05}
                 className="grid gap-4 border-b border-white/15 py-7 sm:grid-cols-[80px_1fr] sm:gap-8 sm:py-9"
               >
-                <span className="text-sm font-bold tracking-[0.2em] text-white/40">
+                <span className="text-sm font-bold tracking-[0.2em] text-[var(--color-text-muted)]/40">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
                 <div>
-                  <p className="text-lg font-bold leading-7 text-white sm:text-xl">
+                  <p className="text-lg font-bold leading-7 text-[var(--color-text-muted)] sm:text-xl">
                     {faq.question}
                   </p>
 
-                  <p className="mt-3 max-w-3xl text-sm leading-7 text-white/65 sm:text-base">
+                  <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--color-text-primary)]/65 sm:text-base">
                     {faq.answer}
                   </p>
                 </div>
@@ -271,10 +600,15 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Final CTA */}
       <CTASection
         title="Prefer a quick conversation first?"
         description="Reach out and we can discuss your audience, format, timelines, and desired outcomes."
-        variant="brand"
+        variant="soft"
+        primaryLabel="Start a Conversation"
+        primaryTo="https://wa.me/917908466757?text=Hello%20Empowering%20Minds%2C%20I%27d%20like%20to%20know%20more%20about%20your%20programs."
+        secondaryLabel="Explore Our Programs"
+        secondaryTo="/programs"
       />
     </main>
   );

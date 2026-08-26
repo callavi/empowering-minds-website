@@ -1,15 +1,11 @@
 import {
-  ArrowUpRight,
   BriefcaseBusiness,
   Building2,
   Brain,
   GraduationCap,
   HeartHandshake,
   Lightbulb,
-  LineChart,
-  Sparkles,
   Target,
-  Trophy,
   Users,
   TrendingUp,
 } from "lucide-react";
@@ -18,19 +14,14 @@ export const navLinks = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Programs", to: "/programs" },
-  { label: "Empowering U", to: "/empower-u" },
+  { label: "Trainers", to: "/trainers" },
   { label: "Contact", to: "/contact" },
+  {
+    label: "Empowering U",
+    href: "https://empoweringu.theempoweringminds.com",
+    external: true,
+  },
 ];
-
-export const trustedPartners = [
-  "Future Leaders Institute",
-  "Northstar Campus Network",
-  "Catalyst HR Forum",
-  "Apex Education Group",
-  "Thrive Corporate Academy",
-  "BridgePoint Learning",
-];
-
 
 export const homepageSections = {
   whoWeAre:
@@ -171,10 +162,13 @@ export const serviceGroups = [
     areas: [
       {
         id: "student-development",
+        serviceGroup: "educational-institutions",
         title: "Student Development Strategy",
         description:
           "We prepare students not only for examinations, but for professional environments through structured development in communication, confidence, leadership, emotional intelligence, and career readiness.",
-        modules: [
+        price: null,
+        priceLabel: "Contact us",
+          modules: [
           "Communication & Interpersonal Effectiveness",
           "Interview Mastery & Resume Building",
           "Leadership Development",
@@ -187,14 +181,18 @@ export const serviceGroups = [
           "Corporate Readiness",
           "Leap to Success Framework",
         ],
+        ctaLabel: "Request a Callback",
       },
 
       {
         id: "faculty-institutional-staff",
+        serviceGroup: "educational-institutions",
         title: "Faculty & Institutional Staff Development",
         description:
           "We develop behavioural and professional capabilities across faculty members, academic leaders, administrative teams, and institutional management.",
-        modules: [
+        price: null,
+        priceLabel: "Contact us",
+          modules: [
           "Communication Skills",
           "Workplace Behavioural Alignment",
           "Leadership Skills",
@@ -208,6 +206,7 @@ export const serviceGroups = [
           "Engaging & Interactive Learning Techniques",
           "AI Tools in Lead Generation for Business",
         ],
+        ctaLabel: "Request a Callback",
       },
     ],
   },
@@ -223,10 +222,13 @@ export const serviceGroups = [
     areas: [
       {
         id: "human-capital-acceleration",
+        serviceGroup: "corporate-organisations",
         title: "Human Capital Acceleration",
         description:
           "Modern organisations require more than technical competence. We strengthen the behavioural and psychological capabilities that support stable, sustainable performance.",
-        modules: [
+        price: null,
+        priceLabel: "Contact us",
+          modules: [
           "Peak Performance",
           "Emotional Intelligence",
           "Neuro-Linguistic Programming (NLP)",
@@ -241,14 +243,18 @@ export const serviceGroups = [
           "Workplace Behavioural Alignment",
           "Engaging & Interactive Learning Techniques",
         ],
+        ctaLabel: "Request a Callback",
       },
 
       {
         id: "entrepreneurial-performance",
+        serviceGroup: "corporate-organisations",
         title: "Entrepreneurial Performance Conditioning",
         description:
           "We help entrepreneurs and business leaders strengthen the psychological and interpersonal capabilities needed to navigate uncertainty, make decisions, and sustain performance.",
-        modules: [
+        price: null,
+        priceLabel: "Contact us",
+          modules: [
           "Peak Performance",
           "Emotional Intelligence",
           "Neuro-Linguistic Programming (NLP)",
@@ -262,237 +268,239 @@ export const serviceGroups = [
           "POSH Training",
           "Industry-Specific Workshops",
         ],
+        ctaLabel: "Request a Callback",
+      },
+    ],
+  },
+  {
+    id: "individual-growth",
+    title: "Individual Growth",
+    eyebrow: "For Individuals",
+    description:
+      "We help individuals strengthen the personal, behavioural, and professional capabilities needed to grow with greater confidence, clarity, resilience, and effectiveness.",
+    icon: Users,
+
+    areas: [
+      {
+        id: "personal-growth",
+        serviceGroup: "individual-growth",
+        title: "Personal Growth & Performance",
+        description:
+          "A structured approach to developing the mindset, emotional capabilities, interpersonal effectiveness, and performance habits that support meaningful personal and professional growth.",
+        price: null,
+        priceLabel: "Contact us",
+          modules: [
+          "Mindset & Performance",
+          "Emotional Intelligence",
+          "Confidence Building",
+          "Communication Skills",
+          "Interpersonal Effectiveness",
+          "Structured Stress Management",
+          "Coping Mechanism Development",
+          "Better Focus & Clear Goal Setting",
+          "Decision-Making Skills",
+          "Leadership Skills",
+        ],
+        ctaLabel: "Request a Callback",
+      },
+
+      {
+        id: "professional-growth",
+        serviceGroup: "individual-growth",
+        title: "Professional Growth & Effectiveness",
+        description:
+          "We strengthen the behavioural and professional capabilities individuals need to communicate effectively, navigate workplace environments, and perform with greater clarity and confidence.",
+        price: null,
+        priceLabel: "Contact us",
+          modules: [
+          "Professional Communication",
+          "Workplace Behavioural Alignment",
+          "Presentation & Personal Presence",
+          "Leadership Development",
+          "Emotional Regulation",
+          "Executive Presence",
+          "Conflict Resolution",
+          "Performance Enhancement",
+          "Career Readiness",
+          "Image Management",
+        ],
+        ctaLabel: "Request a Callback",
+      },
+    ],
+  },
+
+  {
+    id: "train-the-trainer",
+    title: "Train the Trainer",
+    eyebrow: "For Trainers",
+    description:
+      "We equip trainers and facilitators with the knowledge, behavioural capabilities, and practical techniques required to deliver engaging and effective development experiences.",
+    icon: GraduationCap,
+
+    areas: [
+      {
+        id: "trainer-development",
+        serviceGroup: "train-the-trainer",
+        title: "Trainer Development",
+        description:
+          "We develop trainers who can facilitate learning with confidence, structure, emotional intelligence, and practical engagement techniques.",
+        price: null,
+        priceLabel: "Contact us",
+          modules: [
+          "Trainer Communication Skills",
+          "Facilitation Skills",
+          "Presentation & Trainer Presence",
+          "Emotional Intelligence",
+          "Interpersonal Effectiveness",
+          "Behavioural Techniques",
+          "Neuro-Linguistic Programming (NLP)",
+          "Adult Learning Principles",
+          "Engaging & Interactive Learning Techniques",
+          "Classroom Management",
+        ],
+        ctaLabel: "Request a Callback",
+      },
+
+      {
+        id: "training-design-delivery",
+        serviceGroup: "train-the-trainer",
+        title: "Training Design & Delivery",
+        description:
+          "We help trainers translate development concepts into structured, engaging learning experiences that can be delivered effectively to different audiences.",
+        price: null,
+        priceLabel: "Contact us",
+          modules: [
+          "Training Needs Understanding",
+          "Learning Session Design",
+          "Facilitation Techniques",
+          "Participant Engagement",
+          "Questioning & Active Listening",
+          "Group Dynamics",
+          "Experiential Learning Techniques",
+          "Feedback & Assessment",
+          "Managing Difficult Participants",
+          "Training Delivery Practice",
+        ],
+        ctaLabel: "Request a Callback",
       },
     ],
   },
 ];
 
+export const trainers = [
+  {
+    id: "anik-mitra",
+    name: "Anik Mitra",
+    role: "Investment & Financial Markets Expert",
+    designation: "Equity Research Analyst",
+    shortTitle: "Equity Research Analyst",
+    bio: "Anik Mitra is a finance professional with 19 years of experience in equity research, investment analysis, and financial education. Holding a Master's in Economics, an MBA in Finance, and an Executive Program in Applied Finance from IIM Calcutta, he brings deep expertise in stock market investing, financial modeling, valuation, and fundamental analysis. A SEBI-registered Research Analyst, Anik has delivered training through renowned platforms including Elearnmarkets and Kredent Academy. He also helps students understand industry expectations, workplace culture, professional ethics, and real-world business practices, combining technical knowledge with practical corporate insights.",
+    expertise: [
+      "Equity Research",
+      "Investment Analysis",
+      "Financial Markets",
+      "Financial Modeling",
+      "Valuation",
+      "Fundamental Analysis",
+      "Corporate Exposure",
+    ],
+    image: "/empowering-minds/images/trainers/anik-mitra.jpg",
+  },
 
-export const programs = [
   {
-    id: "human-capital-development-lab",
-    category: "Human Capital Development",
-    cardCategory: "LONG TERM",
-    emoji: "🪪",
-    title: "Fellowship in L&D & OD (Updated with AI Tools)",
-    description:
-      "A strategic capability-building program for people professionals driving workforce growth.",
-    shortDescription:
-      "Transform into a high-impact L&D and OD leader with advanced strategic capabilities.",
-    audience: "HR teams and L&D professionals",
-    duration: "24 weeks blended",
-    format: "Live + cohort-based",
-    price: "₹89,250",
-    priceLine: "₹89,250 · 24 Weeks Program ·",
-    startDate: "13 June 2026",
-    durationLine: "Starting 13 June 2026",
-    footerDate: "24 weeks",
-    ctaLabel: "View Fellowship",
-    topAccent: "bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-muted)] to-[var(--color-secondary)]",
-    icon: BriefcaseBusiness,
-    outcomes: [
-      "Design development pathways linked to performance",
-      "Build learning strategies aligned to business goals",
-      "Lead capability interventions with measurable outcomes",
+    id: "vibhor-tandon",
+    name: "Vibhor Tandon",
+    role: "Transformation Coach & Corporate Strategist",
+    designation: "Management Consultant | Trainer | Strategic Advisor",
+    shortTitle: "Transformation Coach & Corporate Strategist",
+    bio: "Mr. Vibhor Tandon is a Transformation Coach, Management Consultant, Trainer, and Strategic Advisor with over two decades of corporate experience. Having conducted more than 2,000 workshops across India, he specialises in leadership, performance enhancement, communication, NLP, and personal transformation. A strategist at heart with the insight of a Corporate Chanakya, Vibhor works closely with individuals and organisations to unlock potential, strengthen leadership, navigate challenges, and drive meaningful growth.",
+    expertise: [
+      "Leadership",
+      "Performance Enhancement",
+      "Communication",
+      "NLP",
+      "Personal Transformation",
+      "Management Consulting",
+      "Corporate Strategy",
     ],
+    image: "/empowering-minds/images/trainers/vibhor-tandon.jpg",
   },
-  {
-    id: "leadership-excellence-sprint",
-    category: "Leadership Programs",
-    cardCategory: "STRATEGIC",
-    emoji: "🪪",
-    title: "MEHR's Annual Strategic membership for Evolution & Renewal (MASER)",
-    description:
-      "A practical leadership sprint for managers building influence, alignment, and team confidence.",
-    shortDescription:
-      "Build strategic renewal capacity through a focused annual membership experience.",
-    audience: "Emerging and mid-level leaders",
-    duration: "12 weeks",
-    format: "Workshop series",
-    price: "₹12,000",
-    priceLine: "₹12,000 · 24 Weeks Program ·",
-    startDate: "13 June 2026",
-    durationLine: "Starting 13 June 2026",
-    footerDate: "24 weeks",
-    ctaLabel: "View Maser",
-    topAccent: "bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-muted)] to-[var(--color-secondary)]",
-    icon: Trophy,
-    outcomes: [
-      "Improve feedback and communication rhythms",
-      "Lead through change with more clarity",
-      "Strengthen accountability within teams",
-    ],
-  },
-  {
-    id: "faculty-development-for-impact",
-    category: "Institutional Development",
-    cardCategory: "SPECIALIST",
-    emoji: "🤝",
-    title: "Certified Learning & Development Manager (Updated with AI Tools)",
-    description:
-      "A blended program to help faculty elevate facilitation, student engagement, and academic leadership.",
-    shortDescription:
-      "Master modern learning strategies with AI-powered L&D expertise",
-    audience: "Faculty and academic leaders",
-    duration: "6 weeks",
-    format: "Hybrid delivery",
-    price: "₹29,500",
-    priceLine: "₹29,500 + 18% GST ·",
-    startDate: "13 June 2026",
-    durationLine: "04 Weeks Live · 06 Weeks Blended",
-    footerDate: "13 June 2026",
-    ctaLabel: "View Certification",
-    topAccent: "bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-muted)] to-[var(--color-secondary)]",
-    icon: Building2,
-    outcomes: [
-      "Refresh learner-centered teaching practices",
-      "Strengthen classroom and institutional leadership",
-      "Create action plans for improved student outcomes",
-    ],
-  },
-  {
-    id: "career-readiness-bootcamp",
-    category: "Student Development",
-    cardCategory: "SPECIALIST",
-    emoji: "🤝",
-    title: "Certified HR Business Partnering (Updated with AI Tools)",
-    description:
-      "An immersive journey covering communication, interviews, employability, and workplace presence.",
-    shortDescription:
-      "Become a strategic HR partner who drives real business impact",
-    audience: "College students and final-year cohorts",
-    duration: "6 weeks",
-    format: "Bootcamp",
-    price: "₹29,500",
-    priceLine: "₹29,500 + 18% GST ·",
-    startDate: "13 June 2026",
-    durationLine: "04 Weeks Live · 06 Weeks Blended",
-    footerDate: "13 June 2026",
-    ctaLabel: "View Certification",
-    topAccent: "bg-gradient-to-r from-[var(--color-muted)] via-[var(--color-secondary)] to-[var(--color-secondary)]",
-    icon: GraduationCap,
-    outcomes: [
-      "Build interview and workplace communication confidence",
-      "Improve presentation and collaboration skills",
-      "Prepare for placements with stronger self-awareness",
-    ],
-  },
-  {
-    id: "emerging-leaders-lab",
-    category: "Leadership Programs",
-    cardCategory: "STRATEGIC",
-    emoji: "🧭",
-    title: "Emerging Leaders Lab",
-    description:
-      "A focused pathway for high-potential professionals stepping into leadership responsibility.",
-    shortDescription:
-      "Develop executive presence, decision-making, and people leadership in a guided lab.",
-    audience: "First-time and future managers",
-    duration: "8 weeks",
-    format: "Live cohort",
-    price: "₹18,500",
-    priceLine: "₹18,500 · 08 Weeks Program ·",
-    startDate: "15 September 2026",
-    durationLine: "Starting 15 September 2026",
-    footerDate: "8 weeks",
-    ctaLabel: "View Program",
-    topAccent: "bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-muted)] to-[var(--color-secondary)]",
-    icon: Sparkles,
-    outcomes: [
-      "Develop executive presence",
-      "Practice coaching conversations",
-      "Set team priorities with more confidence",
-    ],
-  },
-  {
-    id: "institutional-growth-forum",
-    category: "Institutional Development",
-    cardCategory: "SPECIALIST",
-    emoji: "🏛️",
-    title: "Institutional Growth Forum",
-    description:
-      "A strategic forum to help institutions strengthen leadership, culture, and development systems.",
-    shortDescription:
-      "Help institutional leaders align strategy, culture, and development systems for growth.",
-    audience: "Directors, deans, and institutional leaders",
-    duration: "10 weeks",
-    format: "Facilitated roundtable",
-    price: "₹39,500",
-    priceLine: "₹39,500 · 10 Weeks Program ·",
-    startDate: "01 October 2026",
-    durationLine: "Starting 01 October 2026",
-    footerDate: "10 weeks",
-    ctaLabel: "View Program",
-    topAccent: "bg-gradient-to-r from-[var(--color-muted)] via-[var(--color-secondary)] to-[var(--color-secondary)]",
-    icon: ArrowUpRight,
-    outcomes: [
-      "Align people development with institutional strategy",
-      "Improve collaboration across leadership functions",
-      "Prioritize sustainable growth initiatives",
-    ],
-  },
-  {
-    id: "performance-enhancement-studio",
-    category: "Human Capital Development",
-    cardCategory: "LONG TERM",
-    emoji: "📈",
-    title: "Performance Enhancement Studio",
-    description:
-      "A results-focused engagement to improve productivity, ownership, and performance conversations.",
-    shortDescription:
-      "Improve productivity, ownership, and coaching conversations across teams.",
-    audience: "People managers and team leads",
-    duration: "8 weeks",
-    format: "Onsite or virtual",
-    price: "₹24,000",
-    priceLine: "₹24,000 · 08 Weeks Program ·",
-    startDate: "22 October 2026",
-    durationLine: "Starting 22 October 2026",
-    footerDate: "8 weeks",
-    ctaLabel: "View Program",
-    topAccent: "bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-muted)] to-[var(--color-secondary)]",
-    icon: LineChart,
-    outcomes: [
-      "Run sharper goal-setting conversations",
-      "Build stronger review and coaching habits",
-      "Create visible performance improvement plans",
-    ],
-  },
-  {
-    id: "confidence-and-communication-clinic",
-    category: "Student Development",
-    cardCategory: "SPECIALIST",
-    emoji: "🎤",
-    title: "Confidence and Communication Clinic",
-    description:
-      "A high-energy clinic designed to help learners speak with confidence and show up with clarity.",
-    shortDescription:
-      "Help learners communicate clearly, reduce hesitation, and present with confidence.",
-    audience: "Students and early-career talent",
-    duration: "4 weeks",
-    format: "Interactive workshop",
-    price: "₹7,500",
-    priceLine: "₹7,500 · 04 Weeks Program ·",
-    startDate: "05 November 2026",
-    durationLine: "Starting 05 November 2026",
-    footerDate: "4 weeks",
-    ctaLabel: "View Program",
-    topAccent: "bg-gradient-to-r from-[var(--color-muted)] via-[var(--color-secondary)] to-[var(--color-secondary)]",
-    icon: HeartHandshake,
-    outcomes: [
-      "Speak more clearly in formal settings",
-      "Reduce hesitation and self-doubt",
-      "Project confidence during presentations",
-    ],
-  },
-];
 
-export const categories = [
-  "All",
-  "Human Capital Development",
-  "Leadership Programs",
-  "Student Development",
-  "Institutional Development",
+  {
+    id: "atul-singh",
+    name: "Atul Singh",
+    role: "Strategic Advisor",
+    designation: "CSR, ESG & Sustainability",
+    shortTitle: "Strategic Advisor — CSR, ESG & Sustainability",
+    bio: "Atul Singh is a global advisor operating at the intersection of business, sustainability, and large-scale social impact. With over 36 years of leadership experience across India, Australia, and Bangladesh, he works with corporations, governments, and institutions to transform CSR and ESG from compliance-driven functions into scalable, impact-driven systems. His work focuses on integrating sustainability, governance, and leadership capability into core organisational strategy, ensuring that impact contributes to long-term performance, resilience, and stakeholder value. He is also engaged in strategic advisory and leadership roles across corporate, consulting, and social impact ecosystems.",
+    expertise: [
+      "CSR",
+      "ESG",
+      "Sustainability",
+      "Leadership Capability",
+      "Social Impact",
+      "Strategic Advisory",
+      "Organisational Transformation",
+    ],
+    image: "/empowering-minds/images/trainers/atul-singh.jpg",
+  },
+
+  {
+    id: "brij-mohan-mimani",
+    name: "Brij Mohan Mimani",
+    role: "Corporate Trainer",
+    designation: "Entrepreneurship Mentor | Leadership & Industry Readiness Expert",
+    shortTitle: "Corporate Trainer & Entrepreneurship Mentor",
+    bio: "With over 20 years of professional experience, Brij Mohan Mimani is a seasoned corporate trainer, leadership mentor, and entrepreneurship development expert. Having worked with reputed organisations including ICICI Bank Ltd., he specialises in entrepreneurship development, business financing, leadership training, public speaking, and corporate capacity building. He is also passionate about preparing students for the professional world through corporate exposure, industry insights, workplace readiness skills, and entrepreneurial thinking. His practical approach helps students, aspiring entrepreneurs, and professionals confidently navigate career and business challenges while pursuing sustainable growth.",
+    expertise: [
+      "Entrepreneurship Development",
+      "Business Financing",
+      "Leadership",
+      "Public Speaking",
+      "Corporate Capacity Building",
+      "Industry Readiness",
+      "Corporate Exposure",
+    ],
+    image: "/empowering-minds/images/trainers/brij-mohan-mimani.jpg",
+  },
+
+  {
+    id: "neesha-s-sadani",
+    name: "Neesha S. Sadani",
+    role: "Certified Life & Mindset Coach",
+    designation: "NLP Practitioner | Emotional Wellness Facilitator",
+    shortTitle: "Life & Mindset Coach",
+    bio: "Neesha S. Sadani is a Certified Life & Mindset Coach and NLP Practitioner dedicated to helping individuals unlock their full potential through emotional wellness and personal transformation. Drawing on entrepreneurial experience and years of coaching practice, she understands the personal, emotional, and professional challenges individuals and entrepreneurs often face. She specialises in Emotional Intelligence, Confidence Building, Stress Management, Mindset Transformation, Self-Love, Resilience, and Work-Life Balance. Through NLP techniques, Inner Child Healing, Emotional Wellness practices, and Mindset Coaching, she helps individuals overcome self-doubt, emotional barriers, and limiting beliefs to create meaningful personal and professional growth.",
+    expertise: [
+      "Emotional Intelligence",
+      "Confidence Building",
+      "Stress Management",
+      "Mindset Transformation",
+      "Self-Love",
+      "Resilience",
+      "Work-Life Balance",
+    ],
+    image: "/empowering-minds/images/trainers/neesha-s-sadani.jpg",
+  },
+
+  {
+    id: "sukanya-saha",
+    name: "Sukanya Saha",
+    role: "Soft Skills & Professional Development Trainer",
+    designation: "HR Background | Training & Development",
+    shortTitle: "Soft Skills & Professional Development Trainer",
+    bio: "Sukanya Saha is a Soft Skills and Professional Development Trainer with a background in Human Resources and experience working with individuals and teams. Her areas of training include communication skills, interpersonal skills, confidence building, workplace etiquette, professional behaviour, presentation skills, and professional presence. With a practical and engaging approach, she focuses on helping participants become more confident, effective, and professional in their workplace interactions.",
+    expertise: [
+      "Communication Skills",
+      "Interpersonal Skills",
+      "Confidence Building",
+      "Workplace Etiquette",
+      "Professional Behaviour",
+      "Presentation Skills",
+      "Professional Presence",
+    ],
+    image: "/empowering-minds/images/trainers/sukanya-saha.jpg",
+  },
 ];
 
 export const aboutContent = {

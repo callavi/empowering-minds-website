@@ -4,60 +4,46 @@ const variants = {
   default: {
     card: `
       border border-[var(--color-border)]
-      bg-[var(--color-background)]
-      shadow-[var(--shadow-lg)]
+      bg-[var(--color-surface)]
+      shadow-[var(--shadow-sm)]
       hover:-translate-y-1
-      hover:shadow-[var(--shadow-warm)]
+      hover:shadow-[var(--shadow-md)]
     `,
     icon: `
       bg-[var(--color-soft-accent)]
       text-[var(--color-secondary)]
     `,
-    title: "text-[var(--color-primary)]",
+    title: "text-[var(--color-secondary)]",
     description: "text-[var(--color-text-secondary)]",
   },
 
   minimal: {
     card: `
       bg-transparent
-      hover:-translate-y-1
+      hover:-translate-y-0.5
     `,
     icon: `
       bg-[var(--color-soft-accent)]
       text-[var(--color-secondary)]
     `,
-    title: "text-[var(--color-primary)]",
+    title: "text-[var(--color-secondary)]",
     description: "text-[var(--color-text-secondary)]",
   },
 
-  accent: {
+  featured: {
     card: `
-      border border-[var(--color-secondary)]
-      bg-[var(--gradient-soft)]
+      border border-[var(--color-primary)]/15
+      bg-[var(--color-surface-warm)]
       shadow-[var(--shadow-md)]
       hover:-translate-y-1
       hover:shadow-[var(--shadow-warm)]
     `,
     icon: `
-      bg-[var(--color-secondary)]
+      bg-[var(--color-primary)]
       text-white
     `,
-    title: "text-[var(--color-primary)]",
+    title: "text-[var(--color-secondary)]",
     description: "text-[var(--color-text-secondary)]",
-  },
-  dark: {
-    card: `
-      [background-image:var(--gradient-primary)]
-      shadow-[var(--shadow-dark)]
-      hover:-translate-y-1
-      hover:shadow-[var(--shadow-warm)]
-    `,
-    icon: `
-      bg-white/10
-      text-[var(--color-soft-accent)]
-    `,
-    title: "text-white",
-    description: "text-white/70",
   },
 
   horizontal: {
@@ -73,7 +59,7 @@ const variants = {
       bg-[var(--color-soft-accent)]
       text-[var(--color-secondary)]
     `,
-    title: "text-[var(--color-primary)]",
+    title: "text-[var(--color-secondary)]",
     description: "text-[var(--color-text-secondary)]",
   },
 };
@@ -87,14 +73,19 @@ export default function FeatureCard({
   variant = "default",
 }) {
   const styles = variants[variant] ?? variants.default;
+
   const horizontal = variant === "horizontal";
 
   return (
     <FadeIn
       delay={delay}
       className={`
-        h-full rounded-[var(--radius-xl)]
-        p-5 transition duration-[var(--transition-base)]
+        h-full
+        rounded-[var(--radius-lg)]
+        p-5
+        transition
+        duration-[var(--transition-base)]
+        ease-[var(--ease-brand)]
         sm:p-6
         ${styles.card}
         ${className}
@@ -109,19 +100,27 @@ export default function FeatureCard({
         {Icon && (
           <div
             className={`
-              flex h-14 w-14 items-center justify-center
-              rounded-[var(--radius-lg)]
+              flex h-12 w-12
+              shrink-0
+              items-center justify-center
+              rounded-[var(--radius-md)]
               ${styles.icon}
             `}
           >
-            <Icon size={26} strokeWidth={1.8} />
+            <Icon
+              size={23}
+              strokeWidth={1.8}
+              aria-hidden="true"
+            />
           </div>
         )}
 
         <div className={horizontal ? "min-w-0" : ""}>
           <h3
             className={`
-              text-lg font-bold tracking-tight sm:text-xl
+              text-lg font-bold
+              tracking-tight
+              sm:text-xl
               ${styles.title}
             `}
           >
@@ -130,7 +129,8 @@ export default function FeatureCard({
 
           <p
             className={`
-              mt-3 text-sm leading-7
+              mt-3
+              text-sm leading-7
               ${styles.description}
             `}
           >

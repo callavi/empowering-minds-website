@@ -8,4 +8,8 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: "/empowering-minds/",
+  server: {
+    host: true,
+    allowedHosts: true,
+  },
 });
