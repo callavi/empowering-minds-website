@@ -1,9 +1,18 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+﻿@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/500.css";
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+
 @import "tailwindcss";
 
 :root {
   color-scheme: light;
-  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
   background-color: var(--color-background);
 }
 
@@ -17,6 +26,7 @@ body {
   margin: 0;
   background: var(--color-background);
   color: var(--color-text-primary);
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
 }
 
@@ -48,4 +58,16 @@ select {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+h4,
+h5,
+h6 {
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
