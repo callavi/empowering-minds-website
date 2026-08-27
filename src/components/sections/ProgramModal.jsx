@@ -281,15 +281,6 @@ export default function ProgramModal({ program, onClose }) {
                     ? "Share your details and we'll contact you to arrange a convenient 30-minute time to explore this program."
                     : "Share your details and a member of our team will contact you to understand your requirements."}
                 </p>
-
-                <h2 className="mt-3 text-2xl font-black tracking-tight text-[var(--color-primary)] sm:text-3xl">
-                  Let&apos;s talk about {title}
-                </h2>
-
-                <p className="mt-4 text-sm leading-7 text-slate-600">
-                  Share your details and a member of our team
-                  will contact you to understand your requirements.
-                </p>
               </div>
 
               <form

@@ -404,7 +404,7 @@ export const trainers = [
       "Fundamental Analysis",
       "Corporate Exposure",
     ],
-    image: "/empowering-minds/images/trainers/anik-mitra.jpg",
+    image: "/images/trainers/anik-mitra.jpg",
   },
 
   {
@@ -423,7 +423,7 @@ export const trainers = [
       "Management Consulting",
       "Corporate Strategy",
     ],
-    image: "/empowering-minds/images/trainers/vibhor-tandon.jpg",
+    image: "/images/trainers/vibhor-tandon.jpg",
   },
 
   {
@@ -442,7 +442,7 @@ export const trainers = [
       "Strategic Advisory",
       "Organisational Transformation",
     ],
-    image: "/empowering-minds/images/trainers/atul-singh.jpg",
+    image: "/images/trainers/atul-singh.jpg",
   },
 
   {
@@ -461,7 +461,7 @@ export const trainers = [
       "Industry Readiness",
       "Corporate Exposure",
     ],
-    image: "/empowering-minds/images/trainers/brij-mohan-mimani.jpg",
+    image: "/images/trainers/brij-mohan-mimani.jpg",
   },
 
   {
@@ -480,7 +480,7 @@ export const trainers = [
       "Resilience",
       "Work-Life Balance",
     ],
-    image: "/empowering-minds/images/trainers/neesha-s-sadani.jpg",
+    image: "/images/trainers/neesha-s-sadani.jpg",
   },
 
   {
@@ -499,7 +499,7 @@ export const trainers = [
       "Presentation Skills",
       "Professional Presence",
     ],
-    image: "/empowering-minds/images/trainers/sukanya-saha.jpg",
+    image: "/images/trainers/sukanya-saha.jpg",
   },
 ];
 
@@ -572,7 +572,7 @@ export const aboutContent = {
 };
 
 export const contactDetails = {
-  phones: ["+91 7908466757", "+91 9874383391"],
+  phones: ["+91 7908466757", "+91 7003055263"],
   email: "empoweringminds19@gmail.com",
   address: [
     "Yamuna Building, 86 Golaghata Road",

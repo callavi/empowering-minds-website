@@ -165,7 +165,7 @@ export default function Navbar() {
             ))}
 
             <CTAButton
-              to="/contact"
+              href="tel:+917003055263"
               className="ml-1 px-5 py-2.5"
             >
               Talk to us
@@ -232,7 +232,7 @@ export default function Navbar() {
 
               <div className="pt-4">
                 <CTAButton
-                  to="/contact"
+                  href="tel:+917003055263"
                   className="w-full"
                 >
                   Talk to us
