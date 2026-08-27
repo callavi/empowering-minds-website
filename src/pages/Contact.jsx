@@ -546,7 +546,7 @@ export default function Contact() {
                   {loading
                     ? "Processing..."
                     : intent === "demo"
-                      ? "Continue to Demo Booking"
+                      ? "Continue to Demo Request"
                       : intent === "callback"
                         ? "Request a Callback"
                         : "Continue"}

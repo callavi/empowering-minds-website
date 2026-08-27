@@ -7,6 +7,7 @@ export default function ProgramModal({ program, onClose }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [intent, setIntent] = useState("");
 
   useEffect(() => {
     if (!program) {
@@ -47,15 +48,15 @@ export default function ProgramModal({ program, onClose }) {
     modules = [],
     price,
     priceLabel,
-    ctaLabel = "Request a Callback",
     serviceGroup,
   } = program;
 
   const displayPrice = priceLabel || price || "Contact us";
 
-  const handleCallbackClick = () => {
+  const handleIntentClick = (selectedIntent) => {
     setSubmitError("");
     setSubmitted(false);
+    setIntent(selectedIntent);
     setShowForm(true);
   };
 
@@ -63,6 +64,7 @@ export default function ProgramModal({ program, onClose }) {
     if (isSubmitting) return;
 
     setSubmitError("");
+    setIntent("");
     setShowForm(false);
   };
 
@@ -101,6 +103,7 @@ export default function ProgramModal({ program, onClose }) {
             serviceGroup,
             serviceId: program.id,
             serviceTitle: title,
+            intent,
           },
         });
 
@@ -221,20 +224,27 @@ export default function ProgramModal({ program, onClose }) {
               )}
 
               {/* CTA */}
-              <div className="mt-8">
-                <button
-                  type="button"
-                  onClick={handleCallbackClick}
-                  className="flex w-full items-center justify-center rounded-full bg-[var(--color-secondary)] px-6 py-3.5 text-sm font-semibold text-white transition hover:opacity-90"
-                >
-                  {ctaLabel}
-                </button>
+                <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={() => handleIntentClick("demo")}
+                    className="flex w-full items-center justify-center rounded-full bg-[var(--color-secondary)] px-6 py-3.5 text-sm font-semibold text-white transition hover:opacity-90"
+                  >
+                    Book a 30-minute Demo
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleIntentClick("callback")}
+                    className="flex w-full items-center justify-center rounded-full border border-[var(--color-border)] bg-white px-6 py-3.5 text-sm font-semibold text-[var(--color-primary)] transition hover:border-[var(--color-secondary)]"
+                  >
+                    Request a Callback
+                  </button>
+                </div>
 
                 <p className="mt-3 text-center text-xs leading-5 text-slate-500">
-                  Share your details and our team will get in
-                  touch with you.
+                  Choose how you'd like to take the next step.
                 </p>
-              </div>
             </>
           )}
 
@@ -255,7 +265,21 @@ export default function ProgramModal({ program, onClose }) {
                 </button>
 
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-secondary)]">
-                  Request a Callback
+                  {intent === "demo"
+                    ? "30-minute Demo"
+                    : "Request a Callback"}
+                </p>
+
+                <h2 className="mt-3 text-2xl font-black tracking-tight text-[var(--color-primary)] sm:text-3xl">
+                  {intent === "demo"
+                    ? `Explore ${title}`
+                    : `Let's talk about ${title}`}
+                </h2>
+
+                <p className="mt-4 text-sm leading-7 text-slate-600">
+                  {intent === "demo"
+                    ? "Share your details and we'll contact you to arrange a convenient 30-minute time to explore this program."
+                    : "Share your details and a member of our team will contact you to understand your requirements."}
                 </p>
 
                 <h2 className="mt-3 text-2xl font-black tracking-tight text-[var(--color-primary)] sm:text-3xl">
@@ -430,21 +454,25 @@ export default function ProgramModal({ program, onClose }) {
                 <Check size={30} />
               </div>
 
-              <p className="mt-7 text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-secondary)]">
-                Request Received
-              </p>
-
-              <h2 className="mt-3 text-2xl font-black tracking-tight text-[var(--color-primary)] sm:text-3xl">
-                Thank you for reaching out.
-              </h2>
-
               <p className="mt-4 max-w-md text-sm leading-7 text-slate-600 sm:text-base">
-                Your callback request for{" "}
-                <span className="font-semibold text-[var(--color-primary)]">
-                  {title}
-                </span>{" "}
-                has been received. Our team will get in touch
-                with you soon.
+                {intent === "demo" ? (
+                  <>
+                    Your 30-minute demo request for{" "}
+                    <span className="font-semibold text-[var(--color-primary)]">
+                      {title}
+                    </span>{" "}
+                    has been received. Our team will contact you shortly to arrange a
+                    convenient time.
+                  </>
+                ) : (
+                  <>
+                    Your callback request for{" "}
+                    <span className="font-semibold text-[var(--color-primary)]">
+                      {title}
+                    </span>{" "}
+                    has been received. Our team will get in touch with you soon.
+                  </>
+                )}
               </p>
 
               <button

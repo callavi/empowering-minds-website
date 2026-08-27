@@ -1,9 +1,9 @@
 {
-  "name": "my-app",
+  "name": "empowering-minds",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Vishal8874.github.io/empowering-minds",
+  "homepage": "https://www.thempoweringminds.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
