@@ -7,7 +7,7 @@ import ScrollToHash from "./utils/ScrollToHash";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename="/empowering-minds-website/">
+  <BrowserRouter>
     <ScrollToHash />
     <App />
   </BrowserRouter>
