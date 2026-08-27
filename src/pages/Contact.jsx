@@ -27,7 +27,10 @@ export default function Contact() {
     [serviceGroupId]
   );
 
-  const availableServices = selectedGroup?.areas ?? [];
+  const availableServices = useMemo(
+    () => selectedGroup?.areas ?? [],
+    [selectedGroup]
+  );
 
   const selectedService = useMemo(
     () =>
