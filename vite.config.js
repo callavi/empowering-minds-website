@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "/empowering-minds/",
+  base: "/empowering-minds-website/",
   server: {
     host: true,
     allowedHosts: true,
