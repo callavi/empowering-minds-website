@@ -5,6 +5,7 @@ import TrainerModal from "../components/common/TrainerModal";
 import PageHero from "../components/ui/PageHero";
 import SectionHeader from "../components/ui/SectionHeader";
 import CTASection from "../components/ui/CTASection";
+import { aboutContent } from "../data/siteContent";
 
 import { useState } from "react";
 
