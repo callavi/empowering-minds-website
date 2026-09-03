@@ -30,6 +30,69 @@ export default function Trainers() {
         }}
         />
 
+      {/* Founder */}
+      <section className="bg-[var(--color-background)] py-12 sm:py-16">
+        <div className="mb-7">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
+            A Note from the Founder
+          </p>
+
+          <h2 className="mt-2 text-2xl font-black tracking-tight text-[var(--color-secondary)] sm:text-3xl">
+            A message from Ira Saha
+          </h2>
+        </div>
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div
+              className="
+                flex flex-col gap-7 rounded-[28px]
+                border border-white/10
+                [background-image:var(--gradient-soft)]
+                p-6 shadow-[var(--shadow-lg)]
+                sm:flex-row sm:items-center sm:p-8
+              "
+            >
+              {/* Founder image */}
+              <div className="shrink-0 self-start sm:self-center">
+                <img
+                  src="/images/ira-saha.jpg"
+                  alt="Ira Saha, Founder of Empowering Minds"
+                  className="
+                    h-24 w-24 rounded-full object-cover
+                    ring-4 ring-white/10
+                    sm:h-28 sm:w-28
+                  "
+                />
+              </div>
+
+              {/* Founder content */}
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
+                  {aboutContent.founderShortTitle}
+                </p>
+
+                <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h2 className="text-2xl font-black tracking-tight text-[var(--color-secondary)]">
+                    {aboutContent.founderName}
+                  </h2>
+
+                  <p className="text-sm font-medium text-[var(--color-primary)]/60">
+                    {aboutContent.founderRole}
+                  </p>
+                </div>
+
+                <p className="mt-4 text-sm leading-7 text-[var(--color-secondary)]/75 sm:text-base">
+                  {aboutContent.founderShortNote}
+                </p>
+
+                <p className="mt-4 text-sm font-semibold leading-7 text-[var(--color-primary)] sm:text-base">
+                  {aboutContent.founderShortClosing}
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* Trainers */}
       <section className="py-16 sm:py-20 lg:py-24">

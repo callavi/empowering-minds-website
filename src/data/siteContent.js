@@ -535,6 +535,12 @@ export const aboutContent = {
   founderClosing:
     "We do not create motivation. We create measurable transformation. When internal alignment is engineered correctly, performance becomes sustainable.",
 
+  founderShortTitle: "A Note from the Founder",
+  
+  founderShortNote: "Empowering Minds was founded on a simple belief: sustainable performance begins with people. Our work brings Applied Psychology and Human Resource Development together to help individuals and organisations grow with greater clarity, resilience, and effectiveness.",
+  
+  founderShortClosing: "When people are better equipped to understand themselves, work with others, and navigate change, performance becomes more sustainable.",
+
   whyTitle: "Why Empowering Minds?",
 
   whyPoints: [
