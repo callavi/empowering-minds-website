@@ -33,15 +33,6 @@ export default function Trainers() {
 
       {/* Founder */}
       <section className="bg-[var(--color-background)] py-12 sm:py-16">
-        <div className="mb-7">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
-            A Note from the Founder
-          </p>
-
-          <h2 className="mt-2 text-2xl font-black tracking-tight text-[var(--color-secondary)] sm:text-3xl">
-            A message from Ira Saha
-          </h2>
-        </div>
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div
