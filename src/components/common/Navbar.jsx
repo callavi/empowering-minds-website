@@ -132,6 +132,9 @@ export default function Navbar() {
           <Link
             to="/"
             className="
+              flex
+              items-center
+              gap-3
               shrink-0
               text-lg font-bold
               tracking-[-0.025em]
@@ -145,9 +148,18 @@ export default function Navbar() {
             <img
               src="/images/logo-EM.png"
               alt="Empowering Minds"
-              className="h-10 w-auto sm:h-11"
+              className="h-10 w-10 object-contain sm:h-11 sm:w-11"
             />
-            Empowering Minds
+              <span
+              className="
+                text-lg font-bold
+                tracking-[-0.025em]
+                text-[var(--color-secondary)]
+                sm:text-xl
+               "
+              >
+                 Empowering Minds
+              </span>
           </Link>
 
           {/* --------------------------------
