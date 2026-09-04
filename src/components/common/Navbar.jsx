@@ -142,6 +142,11 @@ export default function Navbar() {
               sm:text-xl
             "
           >
+            <img
+              src="/images/logo-EM.png"
+              alt="Empowering Minds"
+              className="h-10 w-auto sm:h-11"
+            />
             Empowering Minds
           </Link>
 
