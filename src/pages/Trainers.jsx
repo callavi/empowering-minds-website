@@ -29,7 +29,48 @@ export default function Trainers() {
             label: "Explore Our Programs",
             to: "/programs"
         }}
-        />    
+        />  
+      {/* Founder */}
+      <section className="bg-[var(--color-background)] py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <FadeIn>
+            <div
+              className="
+                rounded-[28px]
+                border border-white/10
+                [background-image:var(--gradient-soft)]
+                p-7 shadow-[var(--shadow-lg)]
+                sm:p-9
+              "
+            >
+              {/* Founder content */}
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
+                  {aboutContent.founderShortTitle}
+                </p>
+
+                <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h2 className="text-2xl font-black tracking-tight text-[var(--color-secondary)]">
+                    {aboutContent.founderName}
+                  </h2>
+
+                  <p className="text-sm font-medium text-[var(--color-primary)]/60">
+                    {aboutContent.founderRole}
+                  </p>
+                </div>
+
+                <p className="mt-4 text-sm leading-7 text-[var(--color-secondary)]/75 sm:text-base">
+                  {aboutContent.founderShortNote}
+                </p>
+
+                <p className="mt-4 text-sm font-semibold leading-7 text-[var(--color-primary)] sm:text-base">
+                  {aboutContent.founderShortClosing}
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>  
       {/* Trainers */}
       <section className="py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
