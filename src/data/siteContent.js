@@ -389,6 +389,31 @@ export const serviceGroups = [
 
 export const trainers = [
   {
+  id: "ira-saha",
+  name: "Ira Saha",
+  role: "Founder & Lead Trainer",
+  designation: "Empowering Minds",
+  shortTitle: "Founder & Lead Trainer — Empowering Minds",
+
+  featured: true,
+
+  bio: "Ira Saha brings a unique perspective shaped by her experience across the education and corporate sectors, along with a distinctive combination of knowledge in Commerce, Entrepreneurship, and Psychology. Her work lies at the intersection of business, human behaviour, and performance. She integrates Psychology, Emotional Intelligence, and Neuro-Linguistic Programming (NLP) to help individuals and organisations develop stronger self-awareness, effective communication, leadership capabilities, and enhanced performance. With a practical and people-centric approach, Ira designs engaging learning experiences that connect professional skills with the human side of work—helping people understand themselves better, communicate more effectively, and perform at their best.",
+
+  expertise: [
+    "Performance Enhancement",
+    "Emotional Intelligence",
+    "NLP",
+    "Leadership & Communication",
+    "Behavioural Skills",
+    "Stress Management",
+    "POSH Awareness",
+    "Workplace Effectiveness",
+    "Professional Presence",
+  ],
+
+  image: "/images/trainers/ira-saha.jpg",
+  },
+  {
     id: "anik-mitra",
     name: "Anik Mitra",
     role: "Investment & Financial Markets Expert",
@@ -411,7 +436,7 @@ export const trainers = [
     id: "vibhor-tandon",
     name: "Vibhor Tandon",
     role: "Transformation Coach & Corporate Strategist",
-    designation: "Management Consultant | Trainer | Strategic Advisor",
+    designation: "Management Consultant | Lead Trainer | Strategic Advisor",
     shortTitle: "Transformation Coach & Corporate Strategist",
     bio: "Mr. Vibhor Tandon is a Transformation Coach, Management Consultant, Trainer, and Strategic Advisor with over two decades of corporate experience. Having conducted more than 2,000 workshops across India, he specialises in leadership, performance enhancement, communication, NLP, and personal transformation. A strategist at heart with the insight of a Corporate Chanakya, Vibhor works closely with individuals and organisations to unlock potential, strengthen leadership, navigate challenges, and drive meaningful growth.",
     expertise: [
@@ -451,7 +476,7 @@ export const trainers = [
     role: "Corporate Trainer",
     designation: "Entrepreneurship Mentor | Leadership & Industry Readiness Expert",
     shortTitle: "Corporate Trainer & Entrepreneurship Mentor",
-    bio: "With over 20 years of professional experience, Brij Mohan Mimani is a seasoned corporate trainer, leadership mentor, and entrepreneurship development expert. Having worked with reputed organisations including ICICI Bank Ltd., he specialises in entrepreneurship development, business financing, leadership training, public speaking, and corporate capacity building. He is also passionate about preparing students for the professional world through corporate exposure, industry insights, workplace readiness skills, and entrepreneurial thinking. His practical approach helps students, aspiring entrepreneurs, and professionals confidently navigate career and business challenges while pursuing sustainable growth.",
+    bio: "With over 20 years of professional experience, Brij Mohan Mimani is a seasoned corporate trainer, leadership mentor, and entrepreneurship development expert. He gives practical steps for starting a business and financing. Having worked with reputed organisations including ICICI Bank Ltd., he specialises in entrepreneurship development, business financing, leadership training, public speaking, and corporate capacity building. He is also passionate about preparing students for the professional world through corporate exposure, industry insights, workplace readiness skills, and entrepreneurial thinking. His practical approach helps students, aspiring entrepreneurs, and professionals confidently navigate career and business challenges while pursuing sustainable growth.",
     expertise: [
       "Entrepreneurship Development",
       "Business Financing",
@@ -469,7 +494,7 @@ export const trainers = [
     name: "Neesha S. Sadani",
     role: "Certified Life & Mindset Coach",
     designation: "NLP Practitioner | Emotional Wellness Facilitator",
-    shortTitle: "Life & Mindset Coach",
+    shortTitle: "Self Confidence & Stress Management| Inner Child Healing"
     bio: "Neesha S. Sadani is a Certified Life & Mindset Coach and NLP Practitioner dedicated to helping individuals unlock their full potential through emotional wellness and personal transformation. Drawing on entrepreneurial experience and years of coaching practice, she understands the personal, emotional, and professional challenges individuals and entrepreneurs often face. She specialises in Emotional Intelligence, Confidence Building, Stress Management, Mindset Transformation, Self-Love, Resilience, and Work-Life Balance. Through NLP techniques, Inner Child Healing, Emotional Wellness practices, and Mindset Coaching, she helps individuals overcome self-doubt, emotional barriers, and limiting beliefs to create meaningful personal and professional growth.",
     expertise: [
       "Emotional Intelligence",

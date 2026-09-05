@@ -161,9 +161,8 @@ export default function About() {
             <div className="grid lg:grid-cols-[0.75fr_1.25fr]">
               {/* Founder image */}
               <div className="relative min-h-[420px] overflow-hidden sm:min-h-[500px]">
-                {/* Replace this with Ira Saha's actual photograph */}
                 <img
-                  src="/images/ira-saha.jpg"
+                  src="/images/trainers/ira-saha.jpg"
                   alt="Ira Saha, Founder of Empowering Minds"
                   className="
                     absolute inset-0 h-full w-full object-cover
