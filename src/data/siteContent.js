@@ -394,9 +394,7 @@ export const trainers = [
   role: "Founder & Lead Trainer",
   designation: "Empowering Minds",
   shortTitle: "Founder & Lead Trainer — Empowering Minds",
-
-  featured: true,
-
+  
   bio: "Ira Saha brings a unique perspective shaped by her experience across the education and corporate sectors, along with a distinctive combination of knowledge in Commerce, Entrepreneurship, and Psychology. Her work lies at the intersection of business, human behaviour, and performance. She integrates Psychology, Emotional Intelligence, and Neuro-Linguistic Programming (NLP) to help individuals and organisations develop stronger self-awareness, effective communication, leadership capabilities, and enhanced performance. With a practical and people-centric approach, Ira designs engaging learning experiences that connect professional skills with the human side of work—helping people understand themselves better, communicate more effectively, and perform at their best.",
 
   expertise: [
