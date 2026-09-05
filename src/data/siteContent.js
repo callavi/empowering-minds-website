@@ -414,25 +414,6 @@ export const trainers = [
   image: "/images/trainers/ira-saha.jpg",
   },
   {
-    id: "anik-mitra",
-    name: "Anik Mitra",
-    role: "Investment & Financial Markets Expert",
-    designation: "Equity Research Analyst",
-    shortTitle: "Equity Research Analyst",
-    bio: "Anik Mitra is a finance professional with 19 years of experience in equity research, investment analysis, and financial education. Holding a Master's in Economics, an MBA in Finance, and an Executive Program in Applied Finance from IIM Calcutta, he brings deep expertise in stock market investing, financial modeling, valuation, and fundamental analysis. A SEBI-registered Research Analyst, Anik has delivered training through renowned platforms including Elearnmarkets and Kredent Academy. He also helps students understand industry expectations, workplace culture, professional ethics, and real-world business practices, combining technical knowledge with practical corporate insights.",
-    expertise: [
-      "Equity Research",
-      "Investment Analysis",
-      "Financial Markets",
-      "Financial Modeling",
-      "Valuation",
-      "Fundamental Analysis",
-      "Corporate Exposure",
-    ],
-    image: "/images/trainers/anik-mitra.jpg",
-  },
-
-  {
     id: "vibhor-tandon",
     name: "Vibhor Tandon",
     role: "Transformation Coach & Corporate Strategist",
@@ -450,7 +431,24 @@ export const trainers = [
     ],
     image: "/images/trainers/vibhor-tandon.jpg",
   },
-
+  {
+    id: "anik-mitra",
+    name: "Anik Mitra",
+    role: "Investment & Financial Markets Expert",
+    designation: "Equity Research Analyst",
+    shortTitle: "Equity Research Analyst",
+    bio: "Anik Mitra is a finance professional with 19 years of experience in equity research, investment analysis, and financial education. Holding a Master's in Economics, an MBA in Finance, and an Executive Program in Applied Finance from IIM Calcutta, he brings deep expertise in stock market investing, financial modeling, valuation, and fundamental analysis. A SEBI-registered Research Analyst, Anik has delivered training through renowned platforms including Elearnmarkets and Kredent Academy. He also helps students understand industry expectations, workplace culture, professional ethics, and real-world business practices, combining technical knowledge with practical corporate insights.",
+    expertise: [
+      "Equity Research",
+      "Investment Analysis",
+      "Financial Markets",
+      "Financial Modeling",
+      "Valuation",
+      "Fundamental Analysis",
+      "Corporate Exposure",
+    ],
+    image: "/images/trainers/anik-mitra.jpg",
+  },
   {
     id: "atul-singh",
     name: "Atul Singh",
@@ -488,13 +486,12 @@ export const trainers = [
     ],
     image: "/images/trainers/brij-mohan-mimani.jpg",
   },
-
   {
     id: "neesha-s-sadani",
     name: "Neesha S. Sadani",
     role: "Certified Life & Mindset Coach",
     designation: "NLP Practitioner | Emotional Wellness Facilitator",
-    shortTitle: "Self Confidence & Stress Management| Inner Child Healing"
+    shortTitle: "Self Confidence & Stress Management| Inner Child Healing",
     bio: "Neesha S. Sadani is a Certified Life & Mindset Coach and NLP Practitioner dedicated to helping individuals unlock their full potential through emotional wellness and personal transformation. Drawing on entrepreneurial experience and years of coaching practice, she understands the personal, emotional, and professional challenges individuals and entrepreneurs often face. She specialises in Emotional Intelligence, Confidence Building, Stress Management, Mindset Transformation, Self-Love, Resilience, and Work-Life Balance. Through NLP techniques, Inner Child Healing, Emotional Wellness practices, and Mindset Coaching, she helps individuals overcome self-doubt, emotional barriers, and limiting beliefs to create meaningful personal and professional growth.",
     expertise: [
       "Emotional Intelligence",
@@ -507,7 +504,6 @@ export const trainers = [
     ],
     image: "/images/trainers/neesha-s-sadani.jpg",
   },
-
   {
     id: "sukanya-saha",
     name: "Sukanya Saha",
