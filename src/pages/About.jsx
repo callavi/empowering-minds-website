@@ -7,6 +7,7 @@ import SectionHeader from "../components/ui/SectionHeader";
 import FeatureCard from "../components/ui/FeatureCard";
 import HumanPotentialVisual from "../components/ui/HumanPotentialVisual"
 import TrainerPreview from "../components/sections/TrainerPreview";
+import TestimonialSection from "../components/sections/TestimonialSection";
 
 const foundations = [
   {
@@ -303,6 +304,8 @@ export default function About() {
           </FadeIn>
         </div>
       </section>
+
+      <TestimonialSection />
 
       <CTASection
         title="Let's build stronger human capital together."

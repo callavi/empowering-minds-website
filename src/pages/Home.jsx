@@ -8,6 +8,7 @@ import HumanPotentialVisual from "../components/ui/HumanPotentialVisual";
 import HumanPotentialVisualV2 from "../components/ui/HumanPotentialVisualV2";
 import ProgramsPreview from "../components/sections/ProgramsPreview";
 import TrainerPreview from "../components/sections/TrainerPreview";
+import TestimonialSection from "../components/sections/TestimonialSection";
 
 
 export default function Home() {
@@ -559,6 +560,8 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
+
+      <TestimonialSection />
 
       <CTASection
         title="Build stronger human capital."

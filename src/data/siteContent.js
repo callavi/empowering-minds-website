@@ -623,3 +623,16 @@ export const faqs = [
       "Our work spans performance, emotional intelligence, communication, leadership, behavioural alignment, stress management, interpersonal effectiveness, and other professional development areas.",
   },
 ];
+
+export const testimonials = [
+  {
+    quote:
+      "The interactive sessions gave our managers positive inspiration and valuable insights into strategic thinking, motivation, and effectiveness. The programme helped participants better align their roles and actions with organisational goals.",
+
+    name: "K. S. Adhikari",
+    role: "Chairman",
+    organisation: "Synergy Industrial Services Private Limited",
+
+    programme: "The Leap to Success",
+  },
+];
